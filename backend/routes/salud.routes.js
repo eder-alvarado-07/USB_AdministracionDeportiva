@@ -1,0 +1,13 @@
+const router=require('express').Router();
+const ctrl=require('../controllers/salud.controller');
+const {verificarToken,autorizar}=require('../middleware/auth');
+router.use(verificarToken);
+router.get('/historias',autorizar('administrador','personal_salud'),ctrl.getHistorias);
+router.post('/historias',autorizar('administrador','personal_salud'),ctrl.saveHistoria);
+router.get('/controles',autorizar('administrador','personal_salud','jugador'),ctrl.getControles);
+router.get('/seguimientos-lesiones',autorizar('administrador','personal_salud'),ctrl.getSeguimientos);
+router.post('/seguimientos-lesiones',autorizar('administrador','personal_salud'),ctrl.createSeguimiento);
+router.post('/controles',autorizar('administrador','personal_salud'),ctrl.createControl);
+router.get('/notificaciones',autorizar('administrador','personal_salud','jugador'),ctrl.getNotificaciones);
+router.patch('/notificaciones/:id/leida',autorizar('administrador','personal_salud','jugador'),ctrl.leerNotificacion);
+module.exports=router;

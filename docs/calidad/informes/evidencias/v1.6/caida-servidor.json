@@ -1,0 +1,56 @@
+[
+  {
+    "ruta": "/",
+    "aviso": true,
+    "reintentar": true,
+    "ok": true
+  },
+  {
+    "ruta": "/jugadores",
+    "aviso": true,
+    "reintentar": true,
+    "ok": true
+  },
+  {
+    "ruta": "/entrenamientos",
+    "aviso": true,
+    "reintentar": true,
+    "ok": true
+  },
+  {
+    "ruta": "/asistencia",
+    "aviso": true,
+    "reintentar": true,
+    "ok": true
+  },
+  {
+    "ruta": "/partidos",
+    "aviso": true,
+    "reintentar": true,
+    "ok": true
+  },
+  {
+    "ruta": "/estadisticas",
+    "aviso": true,
+    "reintentar": true,
+    "ok": true
+  },
+  {
+    "ruta": "/lesiones",
+    "aviso": true,
+    "reintentar": true,
+    "ok": true
+  },
+  {
+    "ruta": "/evaluaciones",
+    "aviso": true,
+    "reintentar": true,
+    "ok": true
+  },
+  {
+    "ruta": "/equipos",
+    "aviso": true,
+    "reintentar": true,
+    "ok": true
+  }
+]

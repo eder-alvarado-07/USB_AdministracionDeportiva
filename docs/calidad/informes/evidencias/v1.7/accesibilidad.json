@@ -1,0 +1,182 @@
+[
+  {
+    "rol": "anónimo",
+    "ruta": "/login",
+    "graves": 0,
+    "violaciones": [
+      {
+        "regla": "heading-order",
+        "impacto": "moderate",
+        "elementos": 1,
+        "ayuda": "Heading levels should only increase by one"
+      }
+    ]
+  },
+  {
+    "rol": "administrador",
+    "ruta": "/",
+    "graves": 0,
+    "violaciones": []
+  },
+  {
+    "rol": "administrador",
+    "ruta": "/jugadores",
+    "graves": 0,
+    "violaciones": [
+      {
+        "regla": "page-has-heading-one",
+        "impacto": "moderate",
+        "elementos": 1,
+        "ayuda": "Page should contain a level-one heading"
+      }
+    ]
+  },
+  {
+    "rol": "administrador",
+    "ruta": "/equipos",
+    "graves": 0,
+    "violaciones": [
+      {
+        "regla": "page-has-heading-one",
+        "impacto": "moderate",
+        "elementos": 1,
+        "ayuda": "Page should contain a level-one heading"
+      }
+    ]
+  },
+  {
+    "rol": "administrador",
+    "ruta": "/lesiones",
+    "graves": 0,
+    "violaciones": [
+      {
+        "regla": "page-has-heading-one",
+        "impacto": "moderate",
+        "elementos": 1,
+        "ayuda": "Page should contain a level-one heading"
+      }
+    ]
+  },
+  {
+    "rol": "administrador",
+    "ruta": "/usuarios",
+    "graves": 0,
+    "violaciones": [
+      {
+        "regla": "page-has-heading-one",
+        "impacto": "moderate",
+        "elementos": 1,
+        "ayuda": "Page should contain a level-one heading"
+      }
+    ]
+  },
+  {
+    "rol": "administrador",
+    "ruta": "/antropometria",
+    "graves": 0,
+    "violaciones": [
+      {
+        "regla": "page-has-heading-one",
+        "impacto": "moderate",
+        "elementos": 1,
+        "ayuda": "Page should contain a level-one heading"
+      }
+    ]
+  },
+  {
+    "rol": "entrenador",
+    "ruta": "/",
+    "graves": 0,
+    "violaciones": []
+  },
+  {
+    "rol": "entrenador",
+    "ruta": "/asistencia",
+    "graves": 0,
+    "violaciones": [
+      {
+        "regla": "page-has-heading-one",
+        "impacto": "moderate",
+        "elementos": 1,
+        "ayuda": "Page should contain a level-one heading"
+      }
+    ]
+  },
+  {
+    "rol": "entrenador",
+    "ruta": "/entrenamientos",
+    "graves": 0,
+    "violaciones": [
+      {
+        "regla": "page-has-heading-one",
+        "impacto": "moderate",
+        "elementos": 1,
+        "ayuda": "Page should contain a level-one heading"
+      }
+    ]
+  },
+  {
+    "rol": "entrenador",
+    "ruta": "/partidos",
+    "graves": 0,
+    "violaciones": [
+      {
+        "regla": "page-has-heading-one",
+        "impacto": "moderate",
+        "elementos": 1,
+        "ayuda": "Page should contain a level-one heading"
+      }
+    ]
+  },
+  {
+    "rol": "salud",
+    "ruta": "/",
+    "graves": 0,
+    "violaciones": []
+  },
+  {
+    "rol": "salud",
+    "ruta": "/salud",
+    "graves": 0,
+    "violaciones": [
+      {
+        "regla": "page-has-heading-one",
+        "impacto": "moderate",
+        "elementos": 1,
+        "ayuda": "Page should contain a level-one heading"
+      }
+    ]
+  },
+  {
+    "rol": "salud",
+    "ruta": "/evaluaciones",
+    "graves": 0,
+    "violaciones": [
+      {
+        "regla": "page-has-heading-one",
+        "impacto": "moderate",
+        "elementos": 1,
+        "ayuda": "Page should contain a level-one heading"
+      }
+    ]
+  },
+  {
+    "rol": "jugador",
+    "ruta": "/",
+    "graves": 0,
+    "violaciones": []
+  },
+  {
+    "rol": "jugador",
+    "ruta": "/estadisticas",
+    "graves": 0,
+    "violaciones": [
+      {
+        "regla": "page-has-heading-one",
+        "impacto": "moderate",
+        "elementos": 1,
+        "ayuda": "Page should contain a level-one heading"
+      }
+    ]
+  }
+]

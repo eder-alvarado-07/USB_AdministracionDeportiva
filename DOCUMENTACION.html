@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentación - Sistema de Gestión Deportiva</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ 
+            startOnLoad: true, 
+            theme: 'base',
+            themeVariables: {
+                darkMode: true,
+                primaryColor: '#6366f1',
+                primaryTextColor: '#fff',
+                primaryBorderColor: '#4f46e5',
+                lineColor: '#94a3b8',
+                secondaryColor: '#a855f7',
+                tertiaryColor: '#1e293b'
+            }
+        });
+    </script>
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #a855f7;
+            --bg: #0f172a;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --text: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: rgba(255, 255, 255, 0.1);
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--bg);
+            background-image: 
+                radial-gradient(circle at 0% 0%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 100% 100%, rgba(168, 85, 247, 0.15) 0%, transparent 50%);
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        header {
+            background: transparent;
+            color: white;
+            padding: 80px 0 40px;
+            text-align: center;
+        }
+        h1 { 
+            margin: 0; 
+            font-size: 3.5rem; 
+            font-weight: 800;
+            background: linear-gradient(to right, #818cf8, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.025em;
+        }
+        .header-desc {
+            color: var(--text-muted);
+            font-size: 1.25rem;
+            margin-top: 10px;
+        }
+        h2 { 
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.875rem;
+            font-weight: 700;
+            margin-top: 0;
+            margin-bottom: 24px;
+            color: white;
+        }
+        h2::before {
+            content: "";
+            width: 4px;
+            height: 32px;
+            background: var(--primary);
+            border-radius: 4px;
+        }
+        h3 { 
+            color: var(--secondary); 
+            margin-top: 30px; 
+            font-weight: 600;
+        }
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 40px;
+            border-radius: 24px;
+            border: 1px solid var(--border);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            margin-bottom: 40px;
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+        .mermaid {
+            display: flex;
+            justify-content: center;
+            margin: 32px 0;
+            background: rgba(15, 23, 42, 0.5);
+            padding: 32px;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+        }
+        ul { padding-left: 0; list-style: none; }
+        li { 
+            margin-bottom: 12px; 
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        li::before {
+            content: "→";
+            color: var(--primary);
+            font-weight: bold;
+        }
+        strong { color: white; }
+        .footer {
+            text-align: center;
+            padding: 60px 40px;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            border-top: 1px solid var(--border);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { 
+            background: #334155; 
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover { background: #475569; }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .card { padding: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <h1>Sistema de Gestión Deportiva</h1>
+        <p class="header-desc">Documentación Técnica de Alto Rendimiento</p>
+    </div>
+</header>
+
+<main class="container">
+
+    <section id="modelo-negocio">
+        <div class="card">
+            <h2>🏆 Modelo de Negocio</h2>
+            <p>Plataforma integral diseñada para la optimización administrativa y el seguimiento biomecánico de atletas en clubes deportivos de élite.</p>
+            
+            <h3>Propuesta de Valor</h3>
+            <ul>
+                <li><strong>Centralización Inteligente:</strong> Control unificado de nómina, entrenamientos y salud.</li>
+                <li><strong>Bio-Análisis:</strong> Implementación del somatotipo Heath-Carter y métricas antropométricas.</li>
+                <li><strong>Dashboard Estratégico:</strong> Visualización de KPIs críticos para la toma de decisiones tácticas.</li>
+            </ul>
+
+            <h3>Actores Clave</h3>
+            <ul>
+                <li><strong>Cuerpo Técnico:</strong> Gestión de cargas de trabajo y evolución técnica.</li>
+                <li><strong>Staff Médico:</strong> Prevención, seguimiento y alta médica de lesiones.</li>
+                <li><strong>Analistas:</strong> Procesamiento de datos estadísticos y rendimiento físico.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="metodologia">
+        <div class="card">
+            <h2>⚙️ Metodología</h2>
+            <p>Se utiliza un enfoque <strong>Agile Scrum</strong> con ciclos de entrega continua, garantizando que las herramientas tecnológicas evolucionen al ritmo de las necesidades del equipo.</p>
+        </div>
+    </section>
+
+    <section id="casos-uso">
+        <div class="card">
+            <h2>👥 Casos de Uso</h2>
+            <p>Interacciones fundamentales entre los roles del staff y el ecosistema digital.</p>
+            <div class="mermaid">
+                graph LR
+                    subgraph Sistema ["Ecosistema de Gestión"]
+                        UC1([Gestionar Jugadores])
+                        UC2([Registrar Entrenamiento])
+                        UC3([Controlar Asistencia])
+                        UC4([Evaluar Antropometría])
+                        UC5([Registrar Lesión])
+                        UC6([Analizar Estadísticas])
+                        UC7([Ver Dashboard])
+                    end
+                    
+                    CT[Cuerpo Técnico] --- UC1
+                    CT --- UC2
+                    CT --- UC3
+                    CT --- UC4
+                    CT --- UC6
+                    CT --- UC7
+                    
+                    PM[Staff Médico] --- UC5
+                    PM --- UC1
+
+                    style UC1 fill:#1e293b,stroke:#6366f1,stroke-width:2px,color:#fff
+                    style UC2 fill:#1e293b,stroke:#6366f1,stroke-width:2px,color:#fff
+                    style UC3 fill:#1e293b,stroke:#6366f1,stroke-width:2px,color:#fff
+                    style UC4 fill:#1e293b,stroke:#6366f1,stroke-width:2px,color:#fff
+                    style UC5 fill:#1e293b,stroke:#6366f1,stroke-width:2px,color:#fff
+                    style UC6 fill:#1e293b,stroke:#6366f1,stroke-width:2px,color:#fff
+                    style UC7 fill:#1e293b,stroke:#6366f1,stroke-width:2px,color:#fff
+                    style CT fill:#4f46e5,stroke:#fff,stroke-width:2px,color:#fff
+                    style PM fill:#a855f7,stroke:#fff,stroke-width:2px,color:#fff
+            </div>
+        </div>
+    </section>
+
+    <section id="clases">
+        <div class="card">
+            <h2>📊 Estructura de Datos</h2>
+            <p>Arquitectura de entidades y sus relaciones multidimensionales.</p>
+            <div class="mermaid">
+                classDiagram
+                    direction BT
+                    class Jugador {
+                        +int id
+                        +string nombre
+                        +string posicion
+                        +float peso
+                    }
+                    class Entrenamiento {
+                        +int id
+                        +date fecha
+                        +string tipo
+                    }
+                    class Asistencia {
+                        +int id
+                        +boolean asistio
+                    }
+                    class Lesion {
+                        +int id
+                        +string tipo
+                        +date fecha_inicio
+                    }
+                    class Antropometria {
+                        +int id
+                        +float endomorfia
+                        +float mesomorfia
+                    }
+
+                    Jugador "1" *-- "*" Asistencia
+                    Entrenamiento "1" *-- "*" Asistencia
+                    Jugador "1" *-- "*" Lesion
+                    Jugador "1" *-- "1" Antropometria
+            </div>
+        </div>
+    </section>
+
+    <section id="actividades">
+        <div class="card">
+            <h2>🔄 Flujo de Procesos</h2>
+            <p>Ciclo de vida de una evaluación antropométrica de alto rendimiento.</p>
+            <div class="mermaid">
+                graph TD
+                    Start([Inicio]) --> Sel[Seleccionar Atleta]
+                    Sel --> Form[Apertura de Formulario Bio]
+                    Form --> Med[Toma de Medidas y Pliegues]
+                    Med --> Calc{¿Cálculo Automático?}
+                    Calc -->|Si| Proc[Procesamiento Heath-Carter]
+                    Calc -->|No| Fix[Ajuste Manual]
+                    Proc --> Val{¿Datos Válidos?}
+                    Fix --> Val
+                    Val -->|Si| Save[Persistencia en BD]
+                    Val -->|No| Med
+                    Save --> Rep[Generación de Somatocarta]
+                    Rep --> End([Fin])
+
+                    style Start fill:#22c55e,stroke:#fff,color:#fff
+                    style End fill:#ef4444,stroke:#fff,color:#fff
+                    style Calc fill:#f59e0b,stroke:#fff,color:#fff
+                    style Val fill:#f59e0b,stroke:#fff,color:#fff
+            </div>
+        </div>
+    </section>
+
+    <section id="secuencia">
+        <div class="card">
+            <h2>📡 Interacción de Componentes</h2>
+            <p>Protocolo de comunicación asíncrona para la carga del Dashboard analítico.</p>
+            <div class="mermaid">
+                sequenceDiagram
+                    autonumber
+                    participant U as Usuario
+                    participant F as Frontend (React)
+                    participant B as Backend (Node/Express)
+                    participant D as Database (MySQL)
+
+                    Note over U,F: Interfaz React con Vite
+                    U->>F: Acceso a /dashboard
+                    F->>B: GET /api/dashboard (JWT Auth)
+                    
+                    Note over B,D: Query optimizada con JOINS
+                    B->>D: Fetch KPIs & Estadísticas
+                    D-->>B: ResultSet [JSON]
+                    
+                    B-->>F: HTTP 200 OK (Payload)
+                    F->>F: Re-render con Recharts/D3
+                    F-->>U: Visualización Dinámica
+            </div>
+        </div>
+    </section>
+
+
+    <section id="estado-frontend">
+        <div class="card">
+            <h2>🧭 Estado actual del frontend</h2>
+            <p>Esta sección describe la estructura de la versión actual del proyecto. La existencia de una pantalla no significa que todas sus operaciones estén conectadas y verificadas contra la base de datos.</p>
+            <h3>Módulos identificados</h3>
+            <ul>
+                <li><strong>Inicio:</strong> resumen e indicadores en Dashboard.</li>
+                <li><strong>Gestión deportiva:</strong> Equipos, Deportistas, Entrenamientos, Asistencia, Partidos y Estadísticas.</li>
+                <li><strong>Evaluación y salud:</strong> Evaluaciones, Antropometría, Lesiones y Salud y controles.</li>
+                <li><strong>Administración:</strong> Usuarios y Panel Head Coach.</li>
+            </ul>
+            <h3>Roles contemplados en el frontend</h3>
+            <p>Administrador, Head Coach, Entrenador, Personal de Salud y Jugador. El menú filtra opciones por rol y la aplicación contiene rutas protegidas; sin embargo, la autorización también debe validarse en el backend para impedir el acceso mediante peticiones directas.</p>
+            <h3>Validaciones pendientes</h3>
+            <ul>
+                <li>Comprobar permisos por rol en todas las rutas y endpoints.</li>
+                <li>Comprobar que el jugador no pueda consultar la antropometría ni datos privados de otro deportista.</li>
+                <li>Comprobar que las cuentas de jugador estén vinculadas al perfil deportivo correcto.</li>
+                <li>Crear registros de prueba, recargar la página y confirmar la persistencia.</li>
+                <li>Compilar el frontend y probar los flujos con cuentas separadas por rol.</li>
+            </ul>
+            <p><strong>Nota:</strong> las cuentas demo del frontend sirven para revisar la interfaz en desarrollo; no son prueba de autenticación o permisos de producción. No se declara la persistencia ni la seguridad como verificadas hasta completar las pruebas.</p>
+            <p>Para instrucciones de ejecución, consultar <code>README.md</code>. Para la lista de tareas y pruebas, consultar <code>IMPLEMENTACION.md</code>.</p>
+        </div>
+    </section>
+
+</main>
+
+<div class="footer">
+    <p>&copy; 2026 Sistema de Gestión Deportiva - Generado Automáticamente</p>
+</div>
+
+</body>
+</html>

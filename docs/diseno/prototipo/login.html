@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Iniciar sesión · Administración Deportiva</title>
+<link rel="icon" href="../../../frontend/public/brand/favicon-64.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  body { min-height: 100dvh; }
+  .escena { min-height: 100dvh; display: flex; align-items: flex-start; justify-content: center; }
+
+  .tarjeta {
+    width: 100%; background: var(--blanco);
+    display: flex; flex-direction: column; min-height: 100dvh;
+  }
+
+  /* Banner superior: mismo verde y composición que las diapositivas del portal */
+  .banner {
+    position: relative; overflow: hidden;
+    padding: 36px 24px 28px;
+    background:
+      radial-gradient(120% 90% at 50% 0%, rgba(255,255,255,0.10), rgba(255,255,255,0) 60%),
+      radial-gradient(80% 120% at 100% 100%, #013A08, rgba(1,58,8,0) 70%),
+      var(--verde-noche);
+    color: var(--blanco); text-align: center;
+  }
+  .banner img { width: min(300px, 86%); margin: 0 auto; }
+  .banner .sistema {
+    margin-top: 16px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.28);
+    display: inline-block; font-size: 13px; font-weight: 500; letter-spacing: 0.32em; text-indent: 0.32em;
+  }
+
+  .cuerpo { padding: 28px 24px 32px; display: grid; gap: 18px; flex: 1; align-content: start; }
+  .cuerpo h1 { text-align: center; color: var(--verde-texto); font-size: 24px; font-weight: 400; }
+  .cuerpo form { display: grid; gap: 18px; }
+  .cuerpo .ayuda { font-size: 14px; color: var(--texto-suave); text-align: center; }
+
+  .pie-tarjeta { display: grid; gap: 20px; padding: 24px 24px 8px; }
+  .pie-tarjeta .logo-pie { width: 150px; }
+  .pie-tarjeta p { color: #CCCCCC; font-size: 13px; margin-top: 4px; }
+  .pie-tarjeta ul { list-style: none; display: grid; gap: 6px; }
+
+  @media (min-width: 720px) {
+    .escena { align-items: center; padding: 40px 16px; }
+    .tarjeta {
+      max-width: 660px; min-height: 0;
+      border-radius: var(--radio); overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.12), 0 12px 32px rgba(0,0,0,0.10);
+    }
+    .banner { padding: 44px 40px 32px; }
+    .banner img { width: 360px; }
+    .cuerpo { padding: 32px 64px 36px; }
+    .pie-tarjeta { grid-template-columns: 150px 1fr auto; align-items: start; gap: 28px; padding: 28px 28px 8px; }
+  }
+</style>
+</head>
+<body>
+  <div class="escena">
+    <div class="tarjeta">
+      <header class="banner">
+        <img src="../../../frontend/public/brand/logo-horizontal-blanco.png" alt="Universidad Simón Bolívar">
+        <span class="sistema">ADMINISTRACIÓN DEPORTIVA</span>
+      </header>
+      <div class="franja" role="presentation"></div>
+
+      <main class="cuerpo">
+        <h1>Iniciar sesión</h1>
+
+        <div class="alerta alerta-error" role="alert" id="error" hidden>
+          <i class="fa-solid fa-circle-exclamation" aria-hidden="true"></i>
+          <span>El usuario o la contraseña no coinciden. Revisa los datos e intenta de nuevo.</span>
+        </div>
+
+        <form onsubmit="return false">
+          <div class="campo">
+            <label for="usuario">Usuario o correo</label>
+            <div class="control">
+              <input class="entrada" id="usuario" type="text" autocomplete="username" value="cesar_dt">
+              <span class="icono" aria-hidden="true"><i class="fa-solid fa-user"></i></span>
+            </div>
+          </div>
+          <div class="campo">
+            <label for="clave">Contraseña</label>
+            <div class="control">
+              <input class="entrada" id="clave" type="password" autocomplete="current-password" value="contraseña">
+              <button class="icono" type="button" aria-label="Mostrar contraseña"><i class="fa-solid fa-eye"></i></button>
+            </div>
+          </div>
+          <button class="btn btn-verde btn-bloque" type="submit">
+            <i class="fa-solid fa-right-to-bracket" aria-hidden="true"></i> Iniciar sesión
+          </button>
+        </form>
+
+        <p class="ayuda">¿Olvidaste tu contraseña? Pídele al administrador del club que la restablezca.</p>
+      </main>
+
+      <footer class="pie">
+        <div class="pie-tarjeta">
+          <img class="logo-pie" src="../../../frontend/public/brand/logo-apilado-blanco.png" alt="Universidad Simón Bolívar, Barranquilla y Cúcuta, Colombia. Vigilada MinEducación">
+          <div>
+            <h3>Administración Deportiva</h3>
+            <p>Plantel, entrenamientos, salud y rendimiento de los equipos deportivos de la sede Cúcuta. Uso interno.</p>
+          </div>
+          <div>
+            <h3>Portales</h3>
+            <ul>
+              <li><a href="https://www.unisimon.edu.co">Unisimón</a></li>
+              <li><a href="https://cucuta.unisimon.edu.co/estudiante/">Portal Estudiante</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="pie-final"><span>Todos los derechos reservados © Universidad Simón Bolívar - 2026</span></div>
+      </footer>
+    </div>
+  </div>
+  <script>
+    // Prototipo: ?error muestra el estado de credenciales incorrectas
+    if (location.search.includes('error')) {
+      document.getElementById('error').hidden = false;
+      document.getElementById('usuario').setAttribute('aria-invalid', 'true');
+      document.getElementById('clave').setAttribute('aria-invalid', 'true');
+    }
+  </script>
+</body>
+</html>

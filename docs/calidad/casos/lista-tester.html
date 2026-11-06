@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pruebas del sistema</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  :root {
+    --verde: #088732; --verde-texto: #107233; --verde-oscuro: #00470A; --verde-fondo: #E3F2E7;
+    --naranja: #F0AD4E; --rojo: #A94442; --rojo-fondo: #F2DEDE; --azul-fondo: #E8F1F8; --azul: #245A85;
+    --texto: #212121; --suave: #5E5E5E; --borde: #DDDDDD; --fondo: #EFEFEF; --blanco: #FFFFFF;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font: 15px/1.5 Roboto, system-ui, sans-serif; color: var(--texto); background: var(--fondo); }
+  a { color: var(--verde-texto); }
+  .cabecera { background: var(--verde-oscuro); color: var(--blanco); padding: 22px 16px 18px; }
+  .cabecera > div, main { max-width: 980px; margin: 0 auto; }
+  .cabecera h1 { font-size: 24px; line-height: 1.2; }
+  .cabecera p { color: #CFE6D5; margin-top: 4px; }
+  .franja { height: 6px; background: linear-gradient(90deg, var(--verde-oscuro) 70%, #0A6B3A 70% 82%, #0B5563 82% 93%, #1E88C8 93%); }
+  main { padding: 18px 16px 60px; display: grid; gap: 18px; }
+  .panel { background: var(--blanco); border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,.12); overflow: hidden; }
+  .panel > h2 { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+    background: var(--verde); color: var(--blanco); font-size: 18px; padding: 10px 16px; min-height: 48px; }
+  .panel > h2 small { font-size: 14px; font-weight: 500; background: rgba(0,0,0,.2); padding: 2px 10px; border-radius: 12px; }
+  .cuerpo { padding: 16px; display: grid; gap: 12px; }
+  .cuerpo ol, .cuerpo ul.texto { padding-left: 20px; display: grid; gap: 6px; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #E5E5E5; vertical-align: top; }
+  th { background: #F5F5F5; }
+  code { font-family: ui-monospace, Consolas, monospace; font-size: 13px; background: #F3F3F3; padding: 1px 5px; border-radius: 3px; overflow-wrap: anywhere; }
+  .nota { display: flex; gap: 10px; padding: 12px 14px; border-radius: 4px; background: var(--azul-fondo); color: var(--azul); font-size: 14px; }
+  .nota.aviso { background: #FCF3E0; color: #6B4A00; }
+  .nota i { margin-top: 3px; }
+
+  /* Progreso y filtros */
+  .progreso { display: grid; gap: 8px; }
+  .barra { height: 18px; background: #F0F0F0; border-radius: 4px; overflow: hidden; box-shadow: inset 0 1px 2px rgba(0,0,0,.12); }
+  .barra div { height: 100%; width: 0; background: var(--verde); transition: width .3s ease; }
+  .cifras { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 14px; color: var(--suave); }
+  .cifras b { color: var(--texto); }
+  .filtros { display: flex; flex-wrap: wrap; gap: 8px; }
+  .filtros button { min-height: 40px; padding: 0 14px; border: 1px solid var(--borde); border-radius: 20px; background: var(--blanco);
+    font: 500 14px Roboto, sans-serif; color: var(--texto); cursor: pointer; }
+  .filtros button[aria-pressed="true"] { background: var(--verde); border-color: var(--verde); color: var(--blanco); }
+  .barra-filtros { position: sticky; top: 0; z-index: 5; background: var(--fondo); padding: 10px 0; display: grid; gap: 8px; }
+
+  /* Pruebas */
+  .pruebas { list-style: none; }
+  .prueba { display: grid; grid-template-columns: 28px 1fr; gap: 4px 12px; padding: 14px 16px; border-top: 1px solid #E5E5E5; }
+  .prueba:first-child { border-top: 0; }
+  .prueba input[type=checkbox] { width: 22px; height: 22px; margin-top: 2px; accent-color: var(--verde); cursor: pointer; }
+  .prueba label { cursor: pointer; font-weight: 500; }
+  .prueba.hecha label { color: var(--suave); text-decoration: line-through; text-decoration-color: #AAA; }
+  .prueba .detalle { grid-column: 2; font-size: 14px; color: var(--suave); }
+  .prueba .detalle b { color: var(--texto); font-weight: 500; }
+  .etiquetas { grid-column: 2; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-top: 4px; }
+  .etq { white-space: nowrap; display: inline-flex; align-items: center; gap: 5px; font-size: 12.5px; font-weight: 500; padding: 2px 8px; border-radius: 3px; background: #F0F0F0; color: #444; }
+  .etq.pc { background: var(--azul-fondo); color: var(--azul); }
+  .etq.cel { background: #FCF3E0; color: #6B4A00; }
+  .etq.ambos { background: var(--verde-fondo); color: var(--verde-texto); }
+  .etq.etq-falla { background: var(--rojo-fondo); color: var(--rojo); }
+  .btn-falla { margin-left: auto; min-height: 34px; padding: 0 10px; border: 1px solid #E3B6B5; border-radius: 4px; background: var(--blanco);
+    color: var(--rojo); font: 500 13px Roboto, sans-serif; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; }
+  .oculta { display: none !important; }
+
+  /* Formulario de fallas */
+  form { display: grid; gap: 12px; }
+  .fila { display: grid; gap: 12px; }
+  @media (min-width: 700px) { .fila { grid-template-columns: 1fr 1fr; } }
+  label.campo { display: grid; gap: 4px; font-size: 14px; font-weight: 500; }
+  label.campo span { font-weight: 400; color: var(--suave); font-size: 13px; }
+  input[type=text], select, textarea { width: 100%; min-height: 42px; padding: 8px 10px; border: 1px solid #CCC; border-radius: 4px;
+    font: 15px Roboto, sans-serif; color: var(--texto); background: var(--blanco); }
+  textarea { min-height: 76px; resize: vertical; }
+  input:focus, select:focus, textarea:focus, button:focus-visible { outline: 2px solid var(--verde); outline-offset: 1px; }
+  .botones { display: flex; flex-wrap: wrap; gap: 10px; }
+  .btn { min-height: 42px; padding: 0 16px; border: 1px solid transparent; border-radius: 4px; font: 500 14px Roboto, sans-serif; cursor: pointer;
+    display: inline-flex; align-items: center; gap: 8px; }
+  .btn-primario { background: #1E7F3E; color: var(--blanco); }
+  .btn-secundario { background: #F5F5F5; border-color: #CCC; color: var(--texto); }
+  .btn-peligro { background: var(--blanco); border-color: #E3B6B5; color: var(--rojo); }
+  .fallas { list-style: none; display: grid; gap: 10px; }
+  .falla { border: 1px solid var(--borde); border-radius: 4px; padding: 12px 14px; display: grid; gap: 4px; font-size: 14px; }
+  .falla h3 { font-size: 15px; display: flex; gap: 8px; align-items: baseline; justify-content: space-between; }
+  .falla dl { display: grid; grid-template-columns: max-content 1fr; gap: 2px 10px; }
+  .falla dt { color: var(--suave); }
+  .falla dd { white-space: pre-line; overflow-wrap: anywhere; }
+  .vacio { color: var(--suave); font-size: 14px; }
+  .guardado { font-size: 13px; color: var(--suave); }
+  @media (max-width: 600px) {
+    .cabecera h1 { font-size: 21px; } th, td { padding: 7px 6px; }
+    /* En celular, cada cuenta se lee como una tarjeta: rol, correo completo y qué hace */
+    .cuentas thead { display: none; }
+    .cuentas tr { display: grid; gap: 2px; padding: 10px 0; border-bottom: 1px solid #E5E5E5; }
+    .cuentas td { border: 0; padding: 0; }
+    .cuentas td:first-child { font-weight: 700; }
+    .cuentas code { font-size: 13.5px; }
+  }
+</style>
+</head>
+<body>
+<header class="cabecera">
+  <div>
+    <h1>Pruebas del sistema Administración Deportiva</h1>
+    <p>Lista para el tester: marca cada prueba cuando funcione y reporta cada falla con su captura.</p>
+  </div>
+</header>
+<div class="franja" aria-hidden="true"></div>
+
+<main>
+  <section class="panel" aria-labelledby="t-inicio">
+    <h2 id="t-inicio">Antes de empezar</h2>
+    <div class="cuerpo">
+      <p>Gracias por probar el sistema. La idea es recorrerlo como lo haría cada tipo de usuario y encontrar todo lo que falle, se vea mal o confunda. No hace falta terminar en un día: <b>tus marcas se guardan solas en este navegador</b>, así que puedes cerrar y seguir después (usa siempre el mismo navegador y el mismo PC para abrir esta lista).</p>
+      <table>
+        <tr><th>Enlace del sistema</th><td><a href="https://app-production-d293.up.railway.app" target="_blank" rel="noopener">https://app-production-d293.up.railway.app</a></td></tr>
+        <tr><th>Clave de todas las cuentas</th><td>Te la envía Carlos por mensaje (es la misma para las 6 cuentas).</td></tr>
+      </table>
+      <table aria-label="Cuentas de prueba" class="cuentas">
+        <thead><tr><th>Rol</th><th>Correo</th><th>Qué hace</th></tr></thead>
+        <tbody>
+          <tr><td data-l="Rol">Administrador</td><td data-l="Correo"><code>admin1@dtdeportivo.com</code></td><td data-l="Qué hace">Todo: usuarios, deportes, equipos, deportistas y todos los módulos.</td></tr>
+          <tr><td data-l="Rol">Head coach</td><td data-l="Correo"><code>headcoach@dtdeportivo.com</code></td><td data-l="Qué hace">Supervisa a sus entrenadores. Solo consulta, no edita.</td></tr>
+          <tr><td data-l="Rol">Entrenador</td><td data-l="Correo"><code>cesar_dt@dtdeportivo.com</code></td><td data-l="Qué hace">Tiene el plantel de demostración (23 deportistas de rugby).</td></tr>
+          <tr><td data-l="Rol">Entrenador 2</td><td data-l="Correo"><code>juan_moreno@dtdeportivo.com</code></td><td data-l="Qué hace">Otro entrenador sin plantel: sirve para comprobar que no ve lo de Cesar.</td></tr>
+          <tr><td data-l="Rol">Personal de salud</td><td data-l="Correo"><code>salud@dtdeportivo.com</code></td><td data-l="Qué hace">Lesiones, controles médicos, historia clínica y medidas.</td></tr>
+          <tr><td data-l="Rol">Deportista</td><td data-l="Correo"><code>jugador@dtdeportivo.com</code></td><td data-l="Qué hace">Es Sebastián Peñaranda (#9) del plantel de Cesar.</td></tr>
+        </tbody>
+      </table>
+      <div class="nota"><i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+        <div>Todos los datos son inventados: puedes crear, editar y borrar sin miedo. Para las pruebas en celular, abre el enlace del sistema en tu celular (esta lista puede quedarse abierta en el PC).</div></div>
+      <div class="nota aviso"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>
+        <div><b>Dos cuidados.</b> 1) Las pruebas de cambiar contraseña y de bloqueo por intentos fallidos hazlas solo con <code>juan_moreno</code>, y anota la clave nueva en la falla o en las notas finales. 2) Si el partido de demostración (Unisimón vs. Deportivo Sur) ya pasó cuando hagas la convocatoria, crea un partido nuevo con fecha futura como entrenador y úsalo.</div></div>
+    </div>
+  </section>
+
+  <section class="panel" aria-labelledby="t-fallas-como">
+    <h2 id="t-fallas-como">Cuando encuentres una falla</h2>
+    <div class="cuerpo">
+      <ol>
+        <li><b>Toma una captura</b> de la pantalla con la falla. En PC: <code>Windows + Shift + S</code>. En Android: botón de encendido + bajar volumen. En iPhone: botón lateral + subir volumen.</li>
+        <li><b>Nombra la captura</b> con el número de la falla, por ejemplo <code>FALLA-03.png</code>, para saber a cuál corresponde.</li>
+        <li><b>Toca "Encontré una falla"</b> en la prueba donde ocurrió (se llena el rol y el dispositivo) o usa el formulario de abajo. Describe: con qué rol, en qué pantalla, qué pasos hiciste, qué pasó y qué esperabas que pasara.</li>
+        <li>Si algo <b>funciona pero confunde o se ve raro</b>, también repórtalo con gravedad "Detalle". Esas observaciones valen tanto como los errores.</li>
+        <li>Al terminar (o cada día), toca <b>"Descargar informe"</b> y envíaselo a Carlos junto con las capturas.</li>
+      </ol>
+    </div>
+  </section>
+
+  <div class="barra-filtros">
+    <div class="progreso" aria-live="polite">
+      <div class="barra" role="progressbar" aria-label="Progreso de las pruebas" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div id="barra"></div></div>
+      <div class="cifras" id="cifras"></div>
+    </div>
+    <div class="filtros" role="group" aria-label="Filtrar por dispositivo" id="filtros">
+      <button type="button" data-filtro="todas" aria-pressed="true">Todas</button>
+      <button type="button" data-filtro="pc" aria-pressed="false"><i class="fa-solid fa-desktop" aria-hidden="true"></i> PC</button>
+      <button type="button" data-filtro="cel" aria-pressed="false"><i class="fa-solid fa-mobile-screen" aria-hidden="true"></i> Celular</button>
+      <button type="button" data-filtro="pendientes" aria-pressed="false">Solo pendientes</button>
+    </div>
+  </div>
+
+  <div id="secciones" style="display:grid;gap:18px"></div>
+
+  <section class="panel" aria-labelledby="t-form" id="reportar">
+    <h2 id="t-form">Reportar una falla</h2>
+    <div class="cuerpo">
+      <form id="form-falla">
+        <label class="campo">Título corto
+          <input type="text" name="titulo" required maxlength="120" placeholder="Ej. El botón Guardar asistencia no responde">
+        </label>
+        <div class="fila">
+          <label class="campo">Rol con el que estabas
+            <select name="rol" required>
+              <option value="">Elige el rol</option>
+              <option>Administrador</option><option>Head coach</option><option>Entrenador</option>
+              <option>Entrenador 2</option><option>Personal de salud</option><option>Deportista</option><option>Sin iniciar sesión</option>
+            </select>
+          </label>
+          <label class="campo">Dispositivo
+            <select name="dispositivo" required>
+              <option value="">Elige el dispositivo</option>
+              <option>PC</option><option>Celular Android</option><option>iPhone</option><option>Tableta</option>
+            </select>
+          </label>
+        </div>
+        <div class="fila">
+          <label class="campo">Pantalla o sección <span>Ej. Asistencia, Inicio → Esta semana, Campanita</span>
+            <input type="text" name="pantalla" required placeholder="Dónde estabas">
+          </label>
+          <label class="campo">Navegador y modelo <span>Ej. Chrome en Samsung A54, Safari en iPhone 13</span>
+            <input type="text" name="navegador" placeholder="Opcional">
+          </label>
+        </div>
+        <label class="campo">Pasos para que ocurra <span>Uno por línea, desde que entras a la pantalla</span>
+          <textarea name="pasos" required placeholder="1. Entré a Asistencia&#10;2. Elegí el entrenamiento del viernes&#10;3. Toqué Guardar"></textarea>
+        </label>
+        <div class="fila">
+          <label class="campo">Qué pasó
+            <textarea name="obtenido" required placeholder="Lo que viste (mensaje, pantalla en blanco, dato equivocado…)"></textarea>
+          </label>
+          <label class="campo">Qué esperabas que pasara
+            <textarea name="esperado" required placeholder="Lo que debería haber hecho el sistema"></textarea>
+          </label>
+        </div>
+        <div class="fila">
+          <label class="campo">Gravedad
+            <select name="gravedad" required>
+              <option value="">Elige la gravedad</option>
+              <option>Bloquea: no se puede seguir o se pierden datos</option>
+              <option>Molesta: funciona mal pero hay cómo seguir</option>
+              <option>Detalle: se ve raro, confunde o es un texto equivocado</option>
+            </select>
+          </label>
+          <label class="campo">Nombre de la captura
+            <input type="text" name="captura" placeholder="Se llena solo, ej. FALLA-01.png">
+          </label>
+        </div>
+        <input type="hidden" name="prueba">
+        <div class="botones">
+          <button class="btn btn-primario" type="submit"><i class="fa-solid fa-bug" aria-hidden="true"></i> Guardar falla</button>
+          <button class="btn btn-secundario" type="reset">Limpiar</button>
+        </div>
+      </form>
+      <h3 style="font-size:16px;margin-top:6px">Fallas reportadas</h3>
+      <ul class="fallas" id="fallas"></ul>
+    </div>
+  </section>
+
+  <section class="panel" aria-labelledby="t-final">
+    <h2 id="t-final">Notas finales e informe</h2>
+    <div class="cuerpo">
+      <label class="campo">Notas generales <span>Impresiones, claves que cambiaste, ideas, lo que más te costó entender</span>
+        <textarea id="notas" placeholder="Escribe aquí cualquier comentario general"></textarea>
+      </label>
+      <div class="botones">
+        <button class="btn btn-primario" type="button" id="descargar"><i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i> Descargar informe</button>
+        <button class="btn btn-secundario" type="button" id="copiar"><i class="fa-regular fa-copy" aria-hidden="true"></i> Copiar informe</button>
+        <button class="btn btn-secundario" type="button" id="respaldo"><i class="fa-solid fa-floppy-disk" aria-hidden="true"></i> Guardar respaldo</button>
+        <label class="btn btn-secundario" style="cursor:pointer"><i class="fa-solid fa-folder-open" aria-hidden="true"></i> Cargar respaldo
+          <input type="file" id="cargar" accept=".json,application/json" class="oculta"></label>
+        <button class="btn btn-peligro" type="button" id="borrar"><i class="fa-solid fa-trash-can" aria-hidden="true"></i> Empezar de cero</button>
+      </div>
+      <p class="guardado" id="guardado"></p>
+      <p class="vacio">El respaldo sirve para pasar tu avance a otro computador o navegador: guárdalo aquí y cárgalo allá.</p>
+    </div>
+  </section>
+</main>
+
+<script>
+// d: PC, Celular o Ambos.  r: rol con el que se hace.  e: resultado esperado.
+const SECCIONES = [
+  { id: 'v19', titulo: 'Correcciones para volver a probar (v1.9)', pruebas: [
+    ['v19-01', 'El entrenador solo ve su deporte', 'Entrenador', 'pc', 'En la cabecera aparece "Deporte: Rugby" fijo, sin lista para elegir otros deportes. En Deportistas ya no está el botón "Crear Deporte".'],
+    ['v19-02', 'El deportista solo ve su deporte', 'Deportista', 'ambos', 'No aparecen los demás deportes de la universidad: en PC la cabecera muestra solo Rugby y en celular el menú "Más" también.'],
+    ['v19-03', 'El administrador asigna el deporte de un entrenador', 'Administrador', 'pc', 'En Usuarios → editar a Juan Moreno aparece el campo Deporte. Al elegir uno y guardar, Juan Moreno ve solo ese deporte al entrar.'],
+    ['v19-04', 'Salud ya no ve estadísticas', 'Personal de salud', 'ambos', 'No está la pestaña Estadísticas ni los paneles de máximos anotadores y reconocimientos en el inicio.'],
+    ['v19-05', 'El botón Atrás con la sesión abierta', 'Todos', 'ambos', 'Después de entrar, Atrás ya no muestra el formulario de inicio de sesión. Cerrar sesión y luego Atrás tampoco deja entrar sin clave.'],
+    ['v19-06', 'Ojo para ver la contraseña', 'Todos', 'ambos', 'En Inicio → Mi sesión → Cambiar contraseña, cada campo tiene un ojo que muestra u oculta lo escrito. También en Usuarios al crear un usuario y al restablecer una clave.'],
+    ['v19-07', 'Filtro por deporte en Entrenamientos, Partidos y Salud', 'Administrador', 'pc', 'Al cambiar el deporte de la cabecera, cambian las listas. Las actividades sin equipo (generales) aparecen en todos los deportes.'],
+    ['v19-08', 'Filtro por deporte en Usuarios', 'Administrador', 'pc', 'Hay una columna Deporte. Al elegir Rugby en la cabecera quedan solo las cuentas de ese deporte; se combina con los botones de rol.'],
+    ['v19-09', 'Nombre y rol arriba en el celular', 'Todos', 'cel', 'Debajo del logo se ve el nombre y el rol de quien entró.'],
+    ['v19-10', 'Mi sesión arriba en el celular', 'Todos', 'cel', 'En el inicio, Mi sesión aparece justo debajo del próximo partido, no al final.'],
+  ]},
+  { id: 'acceso', titulo: 'Inicio de sesión y cuenta', pruebas: [
+    ['acc-01', 'Entrar con cada una de las 6 cuentas', 'Todos', 'ambos', 'Cada cuenta llega a su inicio y arriba a la derecha aparece su nombre y su rol. Hazlo al menos una vez en PC y una en celular.'],
+    ['acc-02', 'Entrar con una clave equivocada', 'Sin iniciar sesión', 'ambos', 'Aparece un mensaje claro de correo o contraseña incorrectos, sin entrar.'],
+    ['acc-03', 'Bloqueo por intentos: 5 claves equivocadas seguidas', 'Entrenador 2', 'pc', 'Usa solo juan_moreno. Al sexto intento el sistema pide esperar unos minutos. Pasados 15 minutos vuelve a dejar entrar.'],
+    ['acc-04', 'Recargar la página con la sesión abierta', 'Todos', 'ambos', 'Sigues dentro, en la misma pantalla, sin que te pida entrar de nuevo.'],
+    ['acc-05', 'Cambiar la contraseña desde Inicio → Mi sesión', 'Entrenador 2', 'pc', 'Usa solo juan_moreno y anota la clave nueva. Sale el mensaje de éxito y la próxima vez entra con la clave nueva.'],
+    ['acc-06', 'Cerrar sesión', 'Todos', 'ambos', 'Vuelve a la pantalla de inicio de sesión. Con el botón Atrás del navegador no se puede volver a entrar sin clave.'],
+    ['acc-07', 'Escribir a mano la dirección de una pantalla que el rol no tiene', 'Deportista', 'pc', 'Como deportista, abre el enlace del sistema terminado en /usuarios. No debe mostrar la gestión de usuarios.'],
+  ]},
+  { id: 'diseno', titulo: 'Navegación y aspecto', pruebas: [
+    ['dis-01', 'Menú de pestañas en PC', 'Todos', 'pc', 'Cada rol ve solo sus módulos y todas las pestañas abren su pantalla.'],
+    ['dis-02', 'Menú inferior y hoja "Más" en celular', 'Todos', 'cel', 'Abajo aparecen 4 accesos y "Más" muestra el resto. Todos abren su pantalla.'],
+    ['dis-03', 'Nada se sale de la pantalla en celular', 'Todos', 'cel', 'En ninguna pantalla hay que mover la página hacia los lados. Revisa sobre todo tablas, formularios y ventanas.'],
+    ['dis-04', 'Ventanas y formularios en celular', 'Todos', 'cel', 'Se abren desde abajo, se pueden cerrar con la X y el teclado no tapa el botón de guardar.'],
+    ['dis-05', 'Selector de deporte de la cabecera', 'Administrador', 'pc', 'Al elegir un deporte, las listas muestran solo lo de ese deporte. "Todos los deportes" muestra todo.'],
+    ['dis-06', 'Mensajes de carga, listas vacías y errores', 'Todos', 'ambos', 'Mientras carga se ve la forma de la pantalla; si no hay datos, un mensaje que explica qué hacer. Nunca una pantalla en blanco.'],
+    ['dis-07', 'Sin internet', 'Todos', 'cel', 'Con el modo avión activado, al cambiar de pantalla aparece un aviso y un botón para reintentar. Al volver la conexión, funciona.'],
+  ]},
+  { id: 'admin', titulo: 'Administrador', pruebas: [
+    ['adm-01', 'Crear un usuario nuevo de cada rol en Usuarios', 'Administrador', 'pc', 'El usuario aparece en la lista y puede entrar con la clave que le pusiste.'],
+    ['adm-02', 'Editar, restablecer contraseña y desactivar un usuario', 'Administrador', 'pc', 'Los cambios se guardan. Un usuario desactivado ya no puede entrar.'],
+    ['adm-03', 'Crear y eliminar un deporte desde el inicio (panel Deportes)', 'Administrador', 'pc', 'El deporte aparece en el selector de la cabecera y desaparece al eliminarlo.'],
+    ['adm-04', 'Crear, editar y eliminar un equipo, y cambiar su escudo', 'Administrador', 'pc', 'El equipo y su imagen se ven en Equipos. Al eliminarlo, sus deportistas quedan sin equipo pero no se borran.'],
+    ['adm-05', 'Registrar, editar y eliminar un deportista', 'Administrador', 'pc', 'Aparece en Deportistas con sus datos; al editarlo se ven los cambios.'],
+    ['adm-06', 'Subir la foto de un deportista', 'Administrador', 'ambos', 'La foto se ve en la lista. En celular prueba tomarla con la cámara.'],
+    ['adm-07', 'Importar deportistas desde un archivo CSV', 'Administrador', 'pc', 'Permite descargar una plantilla CSV de ejemplo. Al importarla (puedes editarla con Excel), dice cuántos deportistas se importaron y avisa si alguno quedó sin dorsal. Un archivo con errores debe mostrar un mensaje claro.'],
+    ['adm-08', 'Buscar y usar los filtros avanzados en Deportistas', 'Administrador', 'ambos', 'La búsqueda y los filtros funcionan juntos y se pueden limpiar.'],
+    ['adm-09', 'Enviar un aviso a todos los usuarios (Inicio → Avisos del equipo)', 'Administrador', 'pc', 'Con "Todos los usuarios del sistema", el aviso llega a la campanita de cualquier otra cuenta.'],
+  ]},
+  { id: 'entrenador', titulo: 'Entrenador (Cesar)', pruebas: [
+    ['ent-01', 'Leer el inicio: próximo partido y disponibilidad', 'Entrenador', 'ambos', 'Se ve el próximo partido, cuántos jugadores están disponibles y el número de cada uno con su estado (verde, con restricción o no disponible).'],
+    ['ent-02', 'Tocar un número del plantel', 'Entrenador', 'ambos', 'Se abre el inicio tal como lo ve ese deportista.'],
+    ['ent-03', 'Revisar "Para revisar", "Esta semana" y "Reconocimientos"', 'Entrenador', 'ambos', 'Las alertas llevan a su módulo; la semana muestra día, lugar y hora; los reconocimientos muestran asistencia perfecta y máximos anotador y asistidor.'],
+    ['ent-04', 'Crear un entrenamiento con equipo, hora y lugar', 'Entrenador', 'pc', 'Aparece en Entrenamientos y en "Esta semana" del inicio con lugar y hora. Editarlo y eliminarlo también funciona.'],
+    ['ent-05', 'Tomar asistencia de un entrenamiento', 'Entrenador', 'ambos', 'Marcar a los deportistas y guardar; al volver a entrar se ven las marcas. Debe poder hacerse rápido en celular.'],
+    ['ent-06', 'Cambiar el dorsal de un deportista', 'Entrenador', 'ambos', 'Se cambia tocando el número en Deportistas. No deja repetir un dorsal ya usado en el mismo equipo.'],
+    ['ent-07', 'Crear, editar y eliminar un partido', 'Entrenador', 'pc', 'El partido aparece en Partidos y, si es el más cercano, en el inicio.'],
+    ['ent-08', 'Registrar estadísticas de un partido', 'Entrenador', 'pc', 'Goles o puntos y asistencias por deportista quedan en Estadísticas y cambian los máximos anotadores del inicio.'],
+    ['ent-09', 'Registrar una evaluación de rendimiento', 'Entrenador', 'pc', 'La evaluación queda en Evaluaciones para ese deportista.'],
+    ['ent-10', 'Enviar y eliminar un aviso del equipo', 'Entrenador', 'ambos', 'El aviso queda en "Avisos del equipo" con fecha y destinatarios; al eliminarlo desaparece de la lista.'],
+    ['ent-11', 'Agregar una actividad al calendario', 'Entrenador', 'cel', 'Desde "Esta semana", el ícono de calendario permite descargar el evento o abrir Google Calendar con fecha, hora y lugar correctos.'],
+  ]},
+  { id: 'convocatoria', titulo: 'Convocatoria del partido (entre roles)', pruebas: [
+    ['cnv-01', 'Armar la convocatoria y guardarla como borrador', 'Entrenador', 'pc', 'Desde el inicio o desde Partidos: elegir titulares y suplentes viendo el estado médico de cada uno, con hora y lugar. El deportista todavía no la ve.'],
+    ['cnv-02', 'Publicar la convocatoria', 'Entrenador', 'pc', 'Aparece el mensaje de publicada y el resumen de cuántos faltan por responder.'],
+    ['cnv-03', 'Recibir el aviso y abrir la convocatoria', 'Deportista', 'cel', 'La campanita muestra un número; el aviso "Fuiste convocado" abre la convocatoria con su rol (titular o suplente) y la lista.'],
+    ['cnv-04', 'Confirmar la asistencia', 'Deportista', 'cel', 'Al tocar "Confirmo" queda marcado como confirmado.'],
+    ['cnv-05', 'Avisar que no puede ir, con motivo', 'Deportista', 'cel', 'Se guarda el motivo. El entrenador recibe un aviso y ve el motivo en la convocatoria.'],
+    ['cnv-06', 'Editar la convocatoria publicada', 'Entrenador', 'pc', 'Cambiar a alguien de titular a suplente, quitar a uno y agregar otro: cada afectado recibe su aviso.'],
+    ['cnv-07', 'Ver el registro de cambios', 'Entrenador', 'pc', 'Aparece cada acción (publicar, convocar, confirmar, no puede ir) con quién la hizo y cuándo.'],
+    ['cnv-08', 'Compartir la convocatoria por WhatsApp', 'Entrenador', 'cel', 'Abre WhatsApp con el texto de la convocatoria y el enlace a la app.'],
+    ['cnv-09', 'Agregar el partido al calendario desde la convocatoria', 'Deportista', 'cel', 'El evento del calendario tiene la fecha, la hora y el lugar del partido.'],
+  ]},
+  { id: 'otros-roles', titulo: 'Entrenador 2 y head coach', pruebas: [
+    ['ot-01', 'El entrenador 2 no ve el plantel de Cesar', 'Entrenador 2', 'pc', 'En Deportistas, Asistencia, Estadísticas y el inicio no aparecen los 23 del plantel de demostración.'],
+    ['ot-02', 'El entrenador 2 no ve la agenda del equipo de demostración', 'Entrenador 2', 'pc', 'Los entrenamientos y partidos del equipo de Cesar no aparecen en su lista ni en su inicio.'],
+    ['ot-03', 'Panel de Supervisión del head coach', 'Head coach', 'ambos', 'Muestra a sus entrenadores y los deportistas de cada uno.'],
+    ['ot-04', 'El head coach solo consulta', 'Head coach', 'pc', 'En Entrenamientos, Partidos, Asistencia y Deportistas puede ver todo lo de sus entrenadores pero no aparecen botones para crear, editar ni borrar.'],
+  ]},
+  { id: 'salud', titulo: 'Personal de salud', pruebas: [
+    ['sal-01', 'Registrar, editar y eliminar una lesión', 'Personal de salud', 'pc', 'La lesión aparece en Lesiones con gravedad y fecha de retorno.'],
+    ['sal-02', 'La lesión cambia la disponibilidad', 'Personal de salud', 'ambos', 'Después de registrarla, en el inicio del entrenador ese deportista sale como no disponible y en "Para revisar".'],
+    ['sal-03', 'Registrar controles médicos: apto, con restricción y no apto', 'Personal de salud', 'pc', 'Cada control queda en Salud y controles, y el estado del deportista cambia en el inicio del entrenador.'],
+    ['sal-04', 'Llenar y guardar una historia clínica deportiva', 'Personal de salud', 'pc', 'Se guarda y al volver a abrirla conserva los datos.'],
+    ['sal-05', 'Registrar medidas antropométricas', 'Personal de salud', 'pc', 'El registro aparece con su gráfica (somatocarta) y los cálculos.'],
+    ['sal-06', 'Registrar una evaluación', 'Personal de salud', 'pc', 'Queda en Evaluaciones.'],
+  ]},
+  { id: 'deportista', titulo: 'Deportista', pruebas: [
+    ['dep-01', 'Leer el inicio del deportista', 'Deportista', 'cel', 'Se ve su estado (disponible o no), su asistencia, la agenda de la semana, los avisos del equipo y sus reconocimientos si los tiene.'],
+    ['dep-02', 'Recibir un aviso del entrenador', 'Deportista', 'cel', 'Lo que envió el entrenador aparece en la campanita y en "Avisos del equipo".'],
+    ['dep-03', 'Recordatorio del entrenamiento de mañana', 'Deportista', 'cel', 'Primero, como entrenador, crea un entrenamiento para mañana en el equipo de demostración. Luego, como deportista, la campanita muestra "Mañana tienes entrenamiento" con hora y lugar, una sola vez.'],
+    ['dep-04', 'Marcar los avisos como leídos', 'Deportista', 'cel', 'Al abrir un aviso o tocar "Marcar todo como leído", el número de la campanita baja.'],
+    ['dep-05', 'Ver sus estadísticas, lesiones, controles y medidas', 'Deportista', 'cel', 'Solo aparecen los datos de Sebastián Peñaranda, nunca los de otros deportistas.'],
+    ['dep-06', 'No puede crear ni editar', 'Deportista', 'pc', 'En ningún módulo aparecen botones para crear, editar o borrar.'],
+    ['dep-07', 'Instalar la app en el celular', 'Deportista', 'cel', 'Android: en Inicio → Mi sesión aparece "Instalar la app". iPhone: en Safari, Compartir → Agregar a pantalla de inicio. Se abre con el ícono de la U, sin la barra del navegador.'],
+  ]},
+];
+
+const CLAVE = 'pruebas-tester-v1';
+const ETQ = { pc: ['pc', 'fa-desktop', 'PC'], cel: ['cel', 'fa-mobile-screen', 'Celular'], ambos: ['ambos', 'fa-desktop', 'PC y celular'] };
+let estado = { hechas: {}, fallas: [], notas: '' };
+let filtro = 'todas';
+
+function cargarEstado() {
+  try { const g = JSON.parse(localStorage.getItem(CLAVE)); if (g && typeof g === 'object') estado = { hechas: g.hechas || {}, fallas: g.fallas || [], notas: g.notas || '' }; } catch (e) {}
+}
+function guardarEstado() {
+  try {
+    localStorage.setItem(CLAVE, JSON.stringify(estado));
+    document.getElementById('guardado').textContent = 'Avance guardado en este navegador a las ' + new Date().toLocaleTimeString('es-CO', { hour: '2-digit', minute: '2-digit' }) + '.';
+  } catch (e) {
+    document.getElementById('guardado').textContent = 'Este navegador no permite guardar el avance: usa "Guardar respaldo" antes de cerrar.';
+  }
+}
+const esc = (s) => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+function pintar() {
+  const cont = document.getElementById('secciones');
+  cont.innerHTML = SECCIONES.map(s => `
+    <section class="panel" aria-labelledby="t-${s.id}">
+      <h2 id="t-${s.id}">${esc(s.titulo)} <small id="c-${s.id}"></small></h2>
+      <ul class="pruebas">${s.pruebas.map(([id, texto, rol, disp, esperado]) => {
+        const [cls, ico, nombre] = ETQ[disp];
+        const fallas = estado.fallas.filter(f => f.prueba === id).length;
+        return `<li class="prueba${estado.hechas[id] ? ' hecha' : ''}" data-id="${id}" data-disp="${disp}">
+          <input type="checkbox" id="${id}" ${estado.hechas[id] ? 'checked' : ''}>
+          <label for="${id}">${esc(texto)}</label>
+          <p class="detalle"><b>Debe pasar:</b> ${esc(esperado)}</p>
+          <div class="etiquetas">
+            <span class="etq ${cls}"><i class="fa-solid ${ico}" aria-hidden="true"></i>${disp === 'ambos' ? '<i class="fa-solid fa-mobile-screen" aria-hidden="true"></i>' : ''} ${nombre}</span>
+            <span class="etq"><i class="fa-solid fa-user" aria-hidden="true"></i> ${esc(rol)}</span>
+            <span class="etq">${id.toUpperCase()}</span>
+            ${fallas ? `<span class="etq etq-falla"><i class="fa-solid fa-bug" aria-hidden="true"></i> ${fallas} ${fallas === 1 ? 'falla' : 'fallas'}</span>` : ''}
+            <button type="button" class="btn-falla" data-falla="${id}"><i class="fa-solid fa-bug" aria-hidden="true"></i> Encontré una falla</button>
+          </div>
+        </li>`;
+      }).join('')}</ul>
+    </section>`).join('');
+  aplicarFiltro();
+  contar();
+}
+
+function aplicarFiltro() {
+  document.querySelectorAll('.prueba').forEach(li => {
+    const d = li.dataset.disp, hecha = li.classList.contains('hecha');
+    const ver = filtro === 'todas' || (filtro === 'pendientes' ? !hecha : d === filtro || d === 'ambos');
+    li.classList.toggle('oculta', !ver);
+  });
+  document.querySelectorAll('#secciones > .panel').forEach(p => p.classList.toggle('oculta', !p.querySelector('.prueba:not(.oculta)')));
+}
+
+function contar() {
+  const todas = SECCIONES.flatMap(s => s.pruebas.map(p => p[0]));
+  const hechas = todas.filter(id => estado.hechas[id]).length;
+  const pct = Math.round(hechas / todas.length * 100);
+  document.getElementById('barra').style.width = pct + '%';
+  document.querySelector('.barra').setAttribute('aria-valuenow', pct);
+  document.getElementById('cifras').innerHTML = `<span><b>${hechas} de ${todas.length}</b> pruebas hechas (${pct} %)</span><span><b>${estado.fallas.length}</b> ${estado.fallas.length === 1 ? 'falla reportada' : 'fallas reportadas'}</span>`;
+  SECCIONES.forEach(s => { const h = s.pruebas.filter(p => estado.hechas[p[0]]).length; document.getElementById('c-' + s.id).textContent = `${h} de ${s.pruebas.length}`; });
+}
+
+function pintarFallas() {
+  const ul = document.getElementById('fallas');
+  if (!estado.fallas.length) { ul.innerHTML = '<li class="vacio">Todavía no has reportado fallas.</li>'; return; }
+  ul.innerHTML = estado.fallas.map((f, i) => `
+    <li class="falla">
+      <h3><span>${esc(f.numero)}: ${esc(f.titulo)}</span>
+        <button type="button" class="btn-falla" data-borrar="${i}" aria-label="Eliminar ${esc(f.numero)}"><i class="fa-solid fa-trash-can" aria-hidden="true"></i> Eliminar</button></h3>
+      <dl>
+        <dt>Rol</dt><dd>${esc(f.rol)}</dd>
+        <dt>Dispositivo</dt><dd>${esc(f.dispositivo)}${f.navegador ? ' (' + esc(f.navegador) + ')' : ''}</dd>
+        <dt>Pantalla</dt><dd>${esc(f.pantalla)}</dd>
+        ${f.prueba ? `<dt>Prueba</dt><dd>${esc(f.prueba.toUpperCase())}</dd>` : ''}
+        <dt>Gravedad</dt><dd>${esc(f.gravedad)}</dd>
+        <dt>Pasos</dt><dd>${esc(f.pasos)}</dd>
+        <dt>Qué pasó</dt><dd>${esc(f.obtenido)}</dd>
+        <dt>Esperado</dt><dd>${esc(f.esperado)}</dd>
+        <dt>Captura</dt><dd>${esc(f.captura || '(sin captura)')}</dd>
+      </dl>
+    </li>`).join('');
+}
+
+const siguienteNumero = () => 'FALLA-' + String(estado.fallas.reduce((m, f) => Math.max(m, parseInt(String(f.numero).split('-')[1]) || 0), 0) + 1).padStart(2, '0');
+
+function informe() {
+  const lineas = ['# Informe de pruebas: Administración Deportiva', '', `Fecha: ${new Date().toLocaleString('es-CO')}`, ''];
+  const todas = SECCIONES.flatMap(s => s.pruebas);
+  lineas.push(`Pruebas hechas: ${todas.filter(p => estado.hechas[p[0]]).length} de ${todas.length}. Fallas reportadas: ${estado.fallas.length}.`, '');
+  for (const s of SECCIONES) {
+    lineas.push(`## ${s.titulo}`, '');
+    for (const [id, texto, rol, disp] of s.pruebas) lineas.push(`- [${estado.hechas[id] ? 'x' : ' '}] ${id.toUpperCase()} ${texto} (${rol}, ${ETQ[disp][2]})`);
+    lineas.push('');
+  }
+  lineas.push('## Fallas', '');
+  if (!estado.fallas.length) lineas.push('Sin fallas reportadas.', '');
+  for (const f of estado.fallas) {
+    lineas.push(`### ${f.numero}: ${f.titulo}`, '', `- Rol: ${f.rol}`, `- Dispositivo: ${f.dispositivo}${f.navegador ? ' (' + f.navegador + ')' : ''}`, `- Pantalla: ${f.pantalla}`);
+    if (f.prueba) lineas.push(`- Prueba: ${f.prueba.toUpperCase()}`);
+    lineas.push(`- Gravedad: ${f.gravedad}`, `- Captura: ${f.captura || '(sin captura)'}`, '', 'Pasos:', f.pasos, '', `Qué pasó: ${f.obtenido}`, '', `Qué se esperaba: ${f.esperado}`, '');
+  }
+  lineas.push('## Notas generales', '', estado.notas || '(sin notas)', '');
+  return lineas.join('\n');
+}
+
+function descargar(nombre, texto, tipo) {
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([texto], { type: tipo }));
+  a.download = nombre; document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+}
+
+// Eventos
+document.getElementById('secciones').addEventListener('change', e => {
+  if (e.target.type !== 'checkbox') return;
+  estado.hechas[e.target.id] = e.target.checked;
+  if (!e.target.checked) delete estado.hechas[e.target.id];
+  e.target.closest('.prueba').classList.toggle('hecha', e.target.checked);
+  guardarEstado(); contar(); if (filtro === 'pendientes') aplicarFiltro();
+});
+document.getElementById('secciones').addEventListener('click', e => {
+  const b = e.target.closest('[data-falla]'); if (!b) return;
+  const id = b.dataset.falla;
+  const p = SECCIONES.flatMap(s => s.pruebas.map(x => [...x, s.titulo])).find(x => x[0] === id);
+  const f = document.getElementById('form-falla');
+  f.prueba.value = id;
+  f.pantalla.value = p[5] + ' → ' + p[1];
+  if (p[2] !== 'Todos' && [...f.rol.options].some(o => o.text === p[2])) f.rol.value = p[2];
+  if (p[3] === 'pc') f.dispositivo.value = 'PC';
+  f.captura.value = siguienteNumero() + '.png';
+  document.getElementById('reportar').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  setTimeout(() => f.titulo.focus({ preventScroll: true }), 400);
+});
+document.getElementById('filtros').addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  filtro = b.dataset.filtro;
+  document.querySelectorAll('#filtros button').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+  aplicarFiltro();
+});
+document.getElementById('form-falla').addEventListener('submit', e => {
+  e.preventDefault();
+  const datos = Object.fromEntries(new FormData(e.target));
+  datos.numero = siguienteNumero();
+  if (!datos.captura) datos.captura = datos.numero + '.png';
+  datos.fecha = new Date().toISOString();
+  estado.fallas.push(datos);
+  guardarEstado(); e.target.reset(); pintarFallas(); pintar();
+  document.getElementById('fallas').lastElementChild.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+});
+document.getElementById('form-falla').addEventListener('reset', () => { setTimeout(() => { document.querySelector('#form-falla [name=prueba]').value = ''; }, 0); });
+document.getElementById('fallas').addEventListener('click', e => {
+  const b = e.target.closest('[data-borrar]'); if (!b) return;
+  const f = estado.fallas[+b.dataset.borrar];
+  if (!confirm(`¿Eliminar ${f.numero}: ${f.titulo}?`)) return;
+  estado.fallas.splice(+b.dataset.borrar, 1);
+  guardarEstado(); pintarFallas(); pintar();
+});
+document.getElementById('notas').addEventListener('input', e => { estado.notas = e.target.value; guardarEstado(); });
+document.getElementById('descargar').addEventListener('click', () => descargar(`informe-pruebas-${new Date().toISOString().slice(0, 10)}.md`, informe(), 'text/markdown;charset=utf-8'));
+document.getElementById('copiar').addEventListener('click', async () => {
+  try { await navigator.clipboard.writeText(informe()); document.getElementById('guardado').textContent = 'Informe copiado: pégalo en WhatsApp o en un correo.'; }
+  catch (e) { document.getElementById('guardado').textContent = 'No se pudo copiar: usa "Descargar informe".'; }
+});
+document.getElementById('respaldo').addEventListener('click', () => descargar(`respaldo-pruebas-${new Date().toISOString().slice(0, 10)}.json`, JSON.stringify(estado, null, 1), 'application/json'));
+document.getElementById('cargar').addEventListener('change', async e => {
+  const archivo = e.target.files[0]; if (!archivo) return;
+  try {
+    const g = JSON.parse(await archivo.text());
+    if (!g || typeof g.hechas !== 'object' || !Array.isArray(g.fallas)) throw new Error();
+    estado = { hechas: g.hechas, fallas: g.fallas, notas: g.notas || '' };
+    document.getElementById('notas').value = estado.notas;
+    guardarEstado(); pintar(); pintarFallas();
+  } catch (err) { alert('Ese archivo no es un respaldo de esta lista.'); }
+  e.target.value = '';
+});
+document.getElementById('borrar').addEventListener('click', () => {
+  if (!confirm('Se borrarán todas las marcas, fallas y notas de este navegador. ¿Seguro? Descarga antes el informe si lo necesitas.')) return;
+  estado = { hechas: {}, fallas: [], notas: '' };
+  document.getElementById('notas').value = '';
+  guardarEstado(); pintar(); pintarFallas();
+});
+
+cargarEstado();
+document.getElementById('notas').value = estado.notas;
+pintar(); pintarFallas();
+</script>
+</body>
+</html>

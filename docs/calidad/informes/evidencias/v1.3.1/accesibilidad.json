@@ -1,0 +1,330 @@
+[
+  {
+    "rol": "anónimo",
+    "ruta": "/login",
+    "graves": 1,
+    "violaciones": [
+      {
+        "regla": "color-contrast",
+        "impacto": "serious",
+        "elementos": 1,
+        "ayuda": "Elements must meet minimum color contrast ratio thresholds"
+      },
+      {
+        "regla": "heading-order",
+        "impacto": "moderate",
+        "elementos": 1,
+        "ayuda": "Heading levels should only increase by one"
+      }
+    ]
+  },
+  {
+    "rol": "administrador",
+    "ruta": "/",
+    "graves": 1,
+    "violaciones": [
+      {
+        "regla": "color-contrast",
+        "impacto": "serious",
+        "elementos": 8,
+        "ayuda": "Elements must meet minimum color contrast ratio thresholds"
+      }
+    ]
+  },
+  {
+    "rol": "administrador",
+    "ruta": "/jugadores",
+    "graves": 3,
+    "violaciones": [
+      {
+        "regla": "button-name",
+        "impacto": "critical",
+        "elementos": 56,
+        "ayuda": "Buttons must have discernible text"
+      },
+      {
+        "regla": "color-contrast",
+        "impacto": "serious",
+        "elementos": 3,
+        "ayuda": "Elements must meet minimum color contrast ratio thresholds"
+      },
+      {
+        "regla": "page-has-heading-one",
+        "impacto": "moderate",
+        "elementos": 1,
+        "ayuda": "Page should contain a level-one heading"
+      },
+      {
+        "regla": "select-name",
+        "impacto": "critical",
+        "elementos": 1,
+        "ayuda": "Select element must have an accessible name"
+      }
+    ]
+  },
+  {
+    "rol": "administrador",
+    "ruta": "/equipos",
+    "graves": 1,
+    "violaciones": [
+      {
+        "regla": "color-contrast",
+        "impacto": "serious",
+        "elementos": 7,
+        "ayuda": "Elements must meet minimum color contrast ratio thresholds"
+      },
+      {
+        "regla": "page-has-heading-one",
+        "impacto": "moderate",
+        "elementos": 1,
+        "ayuda": "Page should contain a level-one heading"
+      }
+    ]
+  },
+  {
+    "rol": "administrador",
+    "ruta": "/lesiones",
+    "graves": 2,
+    "violaciones": [
+      {
+        "regla": "button-name",
+        "impacto": "critical",
+        "elementos": 3,
+        "ayuda": "Buttons must have discernible text"
+      },
+      {
+        "regla": "color-contrast",
+        "impacto": "serious",
+        "elementos": 1,
+        "ayuda": "Elements must meet minimum color contrast ratio thresholds"
+      },
+      {
+        "regla": "page-has-heading-one",
+        "impacto": "moderate",
+        "elementos": 1,
+        "ayuda": "Page should contain a level-one heading"
+      }
+    ]
+  },
+  {
+    "rol": "administrador",
+    "ruta": "/usuarios",
+    "graves": 1,
+    "violaciones": [
+      {
+        "regla": "color-contrast",
+        "impacto": "serious",
+        "elementos": 6,
+        "ayuda": "Elements must meet minimum color contrast ratio thresholds"
+      },
+      {
+        "regla": "page-has-heading-one",
+        "impacto": "moderate",
+        "elementos": 1,
+        "ayuda": "Page should contain a level-one heading"
+      }
+    ]
+  },
+  {
+    "rol": "administrador",
+    "ruta": "/antropometria",
+    "graves": 2,
+    "violaciones": [
+      {
+        "regla": "color-contrast",
+        "impacto": "serious",
+        "elementos": 4,
+        "ayuda": "Elements must meet minimum color contrast ratio thresholds"
+      },
+      {
+        "regla": "page-has-heading-one",
+        "impacto": "moderate",
+        "elementos": 1,
+        "ayuda": "Page should contain a level-one heading"
+      },
+      {
+        "regla": "select-name",
+        "impacto": "critical",
+        "elementos": 1,
+        "ayuda": "Select element must have an accessible name"
+      }
+    ]
+  },
+  {
+    "rol": "entrenador",
+    "ruta": "/",
+    "graves": 1,
+    "violaciones": [
+      {
+        "regla": "color-contrast",
+        "impacto": "serious",
+        "elementos": 8,
+        "ayuda": "Elements must meet minimum color contrast ratio thresholds"
+      }
+    ]
+  },
+  {
+    "rol": "entrenador",
+    "ruta": "/asistencia",
+    "graves": 2,
+    "violaciones": [
+      {
+        "regla": "color-contrast",
+        "impacto": "serious",
+        "elementos": 25,
+        "ayuda": "Elements must meet minimum color contrast ratio thresholds"
+      },
+      {
+        "regla": "page-has-heading-one",
+        "impacto": "moderate",
+        "elementos": 1,
+        "ayuda": "Page should contain a level-one heading"
+      },
+      {
+        "regla": "select-name",
+        "impacto": "critical",
+        "elementos": 1,
+        "ayuda": "Select element must have an accessible name"
+      }
+    ]
+  },
+  {
+    "rol": "entrenador",
+    "ruta": "/entrenamientos",
+    "graves": 2,
+    "violaciones": [
+      {
+        "regla": "button-name",
+        "impacto": "critical",
+        "elementos": 10,
+        "ayuda": "Buttons must have discernible text"
+      },
+      {
+        "regla": "color-contrast",
+        "impacto": "serious",
+        "elementos": 1,
+        "ayuda": "Elements must meet minimum color contrast ratio thresholds"
+      },
+      {
+        "regla": "page-has-heading-one",
+        "impacto": "moderate",
+        "elementos": 1,
+        "ayuda": "Page should contain a level-one heading"
+      }
+    ]
+  },
+  {
+    "rol": "entrenador",
+    "ruta": "/partidos",
+    "graves": 2,
+    "violaciones": [
+      {
+        "regla": "button-name",
+        "impacto": "critical",
+        "elementos": 4,
+        "ayuda": "Buttons must have discernible text"
+      },
+      {
+        "regla": "color-contrast",
+        "impacto": "serious",
+        "elementos": 3,
+        "ayuda": "Elements must meet minimum color contrast ratio thresholds"
+      },
+      {
+        "regla": "page-has-heading-one",
+        "impacto": "moderate",
+        "elementos": 1,
+        "ayuda": "Page should contain a level-one heading"
+      }
+    ]
+  },
+  {
+    "rol": "salud",
+    "ruta": "/",
+    "graves": 1,
+    "violaciones": [
+      {
+        "regla": "color-contrast",
+        "impacto": "serious",
+        "elementos": 8,
+        "ayuda": "Elements must meet minimum color contrast ratio thresholds"
+      }
+    ]
+  },
+  {
+    "rol": "salud",
+    "ruta": "/salud",
+    "graves": 2,
+    "violaciones": [
+      {
+        "regla": "color-contrast",
+        "impacto": "serious",
+        "elementos": 2,
+        "ayuda": "Elements must meet minimum color contrast ratio thresholds"
+      },
+      {
+        "regla": "page-has-heading-one",
+        "impacto": "moderate",
+        "elementos": 1,
+        "ayuda": "Page should contain a level-one heading"
+      },
+      {
+        "regla": "scrollable-region-focusable",
+        "impacto": "serious",
+        "elementos": 1,
+        "ayuda": "Scrollable region must have keyboard access"
+      }
+    ]
+  },
+  {
+    "rol": "salud",
+    "ruta": "/evaluaciones",
+    "graves": 1,
+    "violaciones": [
+      {
+        "regla": "color-contrast",
+        "impacto": "serious",
+        "elementos": 1,
+        "ayuda": "Elements must meet minimum color contrast ratio thresholds"
+      },
+      {
+        "regla": "page-has-heading-one",
+        "impacto": "moderate",
+        "elementos": 1,
+        "ayuda": "Page should contain a level-one heading"
+      }
+    ]
+  },
+  {
+    "rol": "jugador",
+    "ruta": "/",
+    "graves": 1,
+    "violaciones": [
+      {
+        "regla": "color-contrast",
+        "impacto": "serious",
+        "elementos": 4,
+        "ayuda": "Elements must meet minimum color contrast ratio thresholds"
+      }
+    ]
+  },
+  {
+    "rol": "jugador",
+    "ruta": "/estadisticas",
+    "graves": 1,
+    "violaciones": [
+      {
+        "regla": "page-has-heading-one",
+        "impacto": "moderate",
+        "elementos": 1,
+        "ayuda": "Page should contain a level-one heading"
+      },
+      {
+        "regla": "scrollable-region-focusable",
+        "impacto": "serious",
+        "elementos": 1,
+        "ayuda": "Scrollable region must have keyboard access"
+      }
+    ]
+  }
+]

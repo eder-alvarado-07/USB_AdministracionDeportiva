@@ -1,0 +1,8 @@
+{
+  "name": "Administración Deportiva - Universidad Simón Bolívar",
+  "description": "Administración Deportiva de la Universidad Simón Bolívar, sede Cúcuta: equipos, deportistas, entrenamientos, asistencia, lesiones, partidos, evaluaciones físicas y antropometría.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

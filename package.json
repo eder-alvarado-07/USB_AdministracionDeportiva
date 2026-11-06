@@ -1,0 +1,51 @@
+{
+  "name": "dt-deportivo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Sistema de Gestión Deportiva",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "node server.js",
+    "build": "vite build",
+    "lint": "node -e 'console.log(\"Lint ok\")'",
+    "start": "NODE_ENV=production node server.js",
+    "db:init": "node backend/config/init_db.js",
+    "seed": "node backend/config/seed.js",
+    "demo": "node backend/config/datos_demo.js",
+    "railway:preparar": "node backend/config/preparar_despliegue.js",
+    "railway:iniciar": "node backend/config/iniciar_railway.js",
+    "test:api": "node pruebas/ejecutar-api.js",
+    "test:ui": "playwright test",
+    "test": "npm run test:api && npm run test:ui",
+    "test:reporte": "node pruebas/reporte.js"
+  },
+  "dependencies": {
+    "axios": "^1.7.2",
+    "compression": "^1.8.1",
+    "cors": "^2.8.5",
+    "csv-parse": "^5.6.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.3",
+    "lucide-react": "^0.396.0",
+    "multer": "^1.4.5-lts.1",
+    "pg": "^8.11.5",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-hot-toast": "^2.4.1",
+    "react-router-dom": "^6.24.0",
+    "recharts": "^2.12.7"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "@playwright/test": "^1.64.0",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "esbuild": "^0.21.5",
+    "tsx": "^4.16.2",
+    "vite": "^5.3.1"
+  }
+}

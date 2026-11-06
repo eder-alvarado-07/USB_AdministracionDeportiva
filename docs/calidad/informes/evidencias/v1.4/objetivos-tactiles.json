@@ -1,0 +1,188 @@
+[
+  {
+    "rol": "administrador",
+    "ruta": "/",
+    "total": 31,
+    "adecuados": 12,
+    "ejemplos": [
+      "a 32px \"Ver lesiones\"",
+      "a 32px \"Ver controles médicos\"",
+      "a 32px \"Registrar control\"",
+      "a 32px \"Ver lesiones\"",
+      "a 32px \"Ver controles médicos\""
+    ]
+  },
+  {
+    "rol": "administrador",
+    "ruta": "/jugadores",
+    "total": 131,
+    "adecuados": 9,
+    "ejemplos": [
+      "select 35px \"🌐 Todos los deportes (28)\n🏅 \"",
+      "button 24px \"Todos\"",
+      "button 24px \"Atletismo\"",
+      "button 24px \"Baloncesto\"",
+      "button 24px \"Fútbol\""
+    ]
+  },
+  {
+    "rol": "administrador",
+    "ruta": "/equipos",
+    "total": 21,
+    "adecuados": 6,
+    "ejemplos": [
+      "input 20px \"\"",
+      "button 24px \"\"",
+      "button 36px \"Ver Plantilla\"",
+      "button 36px \"\"",
+      "button 36px \"\""
+    ]
+  },
+  {
+    "rol": "administrador",
+    "ruta": "/lesiones",
+    "total": 14,
+    "adecuados": 6,
+    "ejemplos": [
+      "button 36px \"Editar\"",
+      "button 36px \"\"",
+      "button 36px \"Editar\"",
+      "button 36px \"\"",
+      "button 36px \"Editar\""
+    ]
+  },
+  {
+    "rol": "administrador",
+    "ruta": "/usuarios",
+    "total": 32,
+    "adecuados": 7,
+    "ejemplos": [
+      "button 26px \"Todos\"",
+      "button 26px \"Administrador\"",
+      "button 26px \"Head Coach\"",
+      "button 26px \"Entrenador\"",
+      "button 26px \"Personal Salud\""
+    ]
+  },
+  {
+    "rol": "administrador",
+    "ruta": "/antropometria",
+    "total": 12,
+    "adecuados": 7,
+    "ejemplos": [
+      "select 36px \"Seleccionar Deportista...\n#7 A\"",
+      "button 27px \"Dashboard Analítico\"",
+      "button 27px \"Historial (0)\"",
+      "a 32px \"Unisimón\"",
+      "a 32px \"Portal Estudiante\""
+    ]
+  },
+  {
+    "rol": "entrenador",
+    "ruta": "/",
+    "total": 29,
+    "adecuados": 12,
+    "ejemplos": [
+      "a 32px \"Ver lesiones\"",
+      "a 32px \"Ver controles médicos\"",
+      "a 32px \"Ver lesiones\"",
+      "a 32px \"Ver controles médicos\"",
+      "a 32px \"Ver lesiones\""
+    ]
+  },
+  {
+    "rol": "entrenador",
+    "ruta": "/asistencia",
+    "total": 33,
+    "adecuados": 5,
+    "ejemplos": [
+      "select 39px \"vie, 16 oct 2026 — Resistencia\"",
+      "button 36px \"Todos presentes\"",
+      "button 36px \"Todos ausentes\"",
+      "button 40px \"Marcar presente\"",
+      "button 40px \"Marcar presente\""
+    ]
+  },
+  {
+    "rol": "entrenador",
+    "ruta": "/entrenamientos",
+    "total": 28,
+    "adecuados": 6,
+    "ejemplos": [
+      "button 36px \"Editar\"",
+      "button 36px \"\"",
+      "button 36px \"Editar\"",
+      "button 36px \"\"",
+      "button 36px \"Editar\""
+    ]
+  },
+  {
+    "rol": "entrenador",
+    "ruta": "/partidos",
+    "total": 16,
+    "adecuados": 6,
+    "ejemplos": [
+      "button 36px \"Editar\"",
+      "button 36px \"\"",
+      "button 36px \"Editar\"",
+      "button 36px \"\"",
+      "button 36px \"Editar\""
+    ]
+  },
+  {
+    "rol": "salud",
+    "ruta": "/",
+    "total": 19,
+    "adecuados": 10,
+    "ejemplos": [
+      "a 32px \"Ver lesiones\"",
+      "a 32px \"Ver controles médicos\"",
+      "a 32px \"Registrar control\"",
+      "a 32px \"Ver lesiones\"",
+      "a 32px \"Ver controles médicos\""
+    ]
+  },
+  {
+    "rol": "salud",
+    "ruta": "/salud",
+    "total": 24,
+    "adecuados": 15,
+    "ejemplos": [
+      "select 40px \"Seleccionar\n#7 Andrés Contrera\"",
+      "select 40px \"Seleccionar\n#7 Andrés Contrera\"",
+      "input 40px \"\"",
+      "input 42px \"\"",
+      "input 42px \"\""
+    ]
+  },
+  {
+    "rol": "salud",
+    "ruta": "/evaluaciones",
+    "total": 8,
+    "adecuados": 6,
+    "ejemplos": [
+      "a 32px \"Unisimón\"",
+      "a 32px \"Portal Estudiante\""
+    ]
+  },
+  {
+    "rol": "jugador",
+    "ruta": "/",
+    "total": 12,
+    "adecuados": 10,
+    "ejemplos": [
+      "a 32px \"Unisimón\"",
+      "a 32px \"Portal Estudiante\""
+    ]
+  },
+  {
+    "rol": "jugador",
+    "ruta": "/estadisticas",
+    "total": 7,
+    "adecuados": 5,
+    "ejemplos": [
+      "a 32px \"Unisimón\"",
+      "a 32px \"Portal Estudiante\""
+    ]
+  }
+]

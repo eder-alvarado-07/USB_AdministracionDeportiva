@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inicio · Administración Deportiva</title>
+<link rel="icon" href="../../../frontend/public/brand/favicon-64.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  body { padding-bottom: 68px; }
+
+  /* ── Header blanco (como el portal) ─────────────────── */
+  .cabecera { background: var(--blanco); }
+  .cabecera-in {
+    display: flex; align-items: center; gap: 10px;
+    max-width: 1440px; margin: 0 auto; height: 60px; padding: 0 16px;
+  }
+  .cabecera .logo { height: 28px; width: auto; }
+  .cabecera .separador { width: 1px; height: 32px; background: #BBBBBB; margin: 0 4px; }
+  .cabecera .sistema { font-size: 10.5px; font-weight: 500; letter-spacing: 0.06em; line-height: 1.25; color: #333; }
+  .cabecera .bienvenida, .cabecera .nombre { display: none; }
+  .foto {
+    margin-left: auto; flex: none;
+    width: 38px; height: 38px; border-radius: 50%;
+    display: grid; place-items: center;
+    background: var(--verde-panel); color: var(--blanco); font-weight: 700; font-size: 14px;
+    box-shadow: 0 0 0 2px var(--blanco), 0 0 0 3px #CCCCCC;
+  }
+  @media (max-width: 379px) { .cabecera .sistema, .cabecera .separador { display: none; } }
+
+  /* ── Pestañas (solo computador) ─────────────────────── */
+  .pestanas { display: none; }
+
+  /* ── Contenido ──────────────────────────────────────── */
+  .contenido {
+    max-width: 1440px; margin: 0 auto; padding: 16px 12px 28px;
+    display: flex; flex-direction: column; gap: 18px;
+  }
+  .columna { display: contents; }
+  .o1 { order: 1; } .o2 { order: 2; } .o3 { order: 3; } .o4 { order: 4; } .o5 { order: 5; } .o6 { order: 6; }
+
+  /* Banner del próximo partido: mismo verde y profundidad del carrusel del portal */
+  .banner {
+    position: relative; overflow: hidden; border-radius: var(--radio);
+    padding: 22px 20px 20px; color: var(--blanco);
+    background:
+      radial-gradient(90% 120% at 15% 0%, rgba(255,255,255,0.10), rgba(255,255,255,0) 55%),
+      radial-gradient(70% 100% at 100% 100%, #012F06, rgba(1,47,6,0) 70%),
+      var(--verde-noche);
+    box-shadow: var(--sombra-panel);
+  }
+  .banner .marca-agua {
+    position: absolute; right: -36px; bottom: -28px; width: 230px; opacity: 0.10; pointer-events: none;
+  }
+  .banner .tipo { font-size: 14px; color: #CFE6D5; }
+  .banner h2 { font-size: 26px; font-weight: 700; line-height: 1.15; margin: 4px 0 6px; }
+  .banner .detalle { font-size: 15px; color: #E3F1E7; }
+  .banner .detalle i { width: 18px; color: var(--naranja); }
+  .banner .acciones { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; margin-top: 16px; }
+  .banner .disponibles { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; color: #E3F1E7; }
+  .banner .disponibles b { font-size: 16px; color: var(--blanco); }
+
+  /* Plantel como dorsales */
+  .plantel { list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(56px, 1fr)); gap: 6px; }
+  .dorsal {
+    position: relative; display: grid; justify-items: center; align-content: center; gap: 1px;
+    min-height: 60px; padding: 6px 2px;
+    background: var(--blanco); border: 1px solid var(--borde); border-radius: var(--radio);
+  }
+  .dorsal .numero { font-size: 20px; font-weight: 700; line-height: 1.1; font-variant-numeric: tabular-nums; }
+  .dorsal .apellido { font-size: 11px; color: var(--texto-suave); max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 0 2px; }
+  .dorsal .estado { position: absolute; top: 4px; right: 4px; font-size: 12px; }
+  .dorsal.restringido { background: var(--aviso-fondo); border-color: #F3D9A4; }
+  .dorsal.restringido .estado { color: #E08E0B; }
+  .dorsal.lesionado { background: var(--error-fondo); border-color: var(--error-borde); }
+  .dorsal.lesionado .numero, .dorsal.lesionado .estado { color: var(--error-texto); }
+  .leyenda { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 14px; font-size: 14px; }
+  .leyenda span { display: inline-flex; align-items: center; gap: 6px; }
+  .leyenda i { font-size: 14px; }
+  .leyenda .l-ok { color: var(--verde-boton); }
+  .leyenda .l-av { color: #E08E0B; }
+  .leyenda .l-er { color: var(--error-texto); }
+
+  /* Para revisar: alertas de la familia Bootstrap */
+  .avisos { list-style: none; display: grid; gap: 10px; }
+  .avisos li { display: grid; grid-template-columns: 22px 1fr; gap: 10px; padding: 12px; border: 1px solid; border-radius: var(--radio); font-size: 14px; }
+  .avisos i { margin-top: 3px; }
+  .avisos a { display: inline-flex; align-items: center; min-height: 32px; font-weight: 700; color: inherit; }
+  .av-error { background: var(--error-fondo); border-color: var(--error-borde); color: var(--error-texto); }
+  .av-aviso { background: var(--aviso-fondo); border-color: var(--aviso-borde); color: var(--aviso-texto); }
+  .av-info { background: var(--info-fondo); border-color: #BCE8F1; color: var(--info-texto); }
+
+  /* Agenda */
+  .agenda { list-style: none; }
+  .agenda li { display: grid; grid-template-columns: 54px 1fr; gap: 12px; align-items: center; padding: 12px 0; border-bottom: 1px solid #EEEEEE; }
+  .agenda li:first-child { padding-top: 0; }
+  .agenda li:last-child { border-bottom: 0; padding-bottom: 0; }
+  .agenda .fecha {
+    display: grid; justify-items: center; line-height: 1; padding: 6px 0;
+    border: 1px solid var(--borde); border-radius: var(--radio); background: #F8F8F8;
+  }
+  .agenda .fecha small { font-size: 11px; color: var(--texto-suave); text-transform: lowercase; }
+  .agenda .fecha b { font-size: 22px; margin-top: 2px; }
+  .agenda .partido .fecha { background: var(--verde-boton); border-color: var(--verde-boton); color: var(--blanco); }
+  .agenda .partido .fecha small { color: #D7EEDD; }
+  .agenda .titulo { font-weight: 700; }
+  .agenda .detalle { font-size: 14px; color: var(--texto-suave); }
+  .etiqueta { display: inline-block; padding: 1px 7px; margin-left: 4px; border-radius: 3px; background: var(--verde-boton); color: var(--blanco); font-size: 12px; font-weight: 700; vertical-align: 1px; }
+
+  /* Asistencia */
+  .asistencia { list-style: none; display: grid; gap: 14px; }
+  .asistencia .fila { display: flex; justify-content: space-between; gap: 12px; font-size: 14px; margin-bottom: 6px; }
+  .asistencia .fila span:last-child { color: var(--texto-suave); font-variant-numeric: tabular-nums; }
+  /* Barra de progreso estilo Bootstrap (familia visual del portal): pista hundida + relleno con volumen */
+  .pista {
+    height: 20px; border-radius: 4px; overflow: hidden;
+    background: #F5F5F5; box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.12);
+  }
+  .pista div {
+    height: 100%; min-width: 2.6em;
+    display: flex; align-items: center; justify-content: flex-end; padding-right: 8px;
+    color: var(--blanco); font-size: 12px; font-weight: 700; font-variant-numeric: tabular-nums;
+    background: linear-gradient(180deg, #2BA455 0%, var(--verde-boton) 55%, #1C7A3C 100%);
+    box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+    transform-origin: left center;
+  }
+  .pista .baja { background: linear-gradient(180deg, #F5BE6E 0%, var(--naranja) 55%, #E0952C 100%); color: #4A2E00; text-shadow: none; }
+  @media (prefers-reduced-motion: no-preference) {
+    .pista div { animation: llenar .7s cubic-bezier(.2, .7, .2, 1) both; }
+    @keyframes llenar { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  }
+  .nota { display: flex; align-items: center; gap: 8px; margin-top: 14px; font-size: 13px; color: var(--texto-suave); }
+  .nota span { width: 16px; height: 8px; border-radius: 2px; background: var(--naranja); }
+
+  /* Mi sesión: réplica del panel "Sesión del usuario" del portal */
+  .sesion { display: grid; grid-template-columns: 96px 1fr; gap: 16px; align-items: start; }
+  .sesion .foto-grande {
+    width: 96px; height: 112px; border-radius: var(--radio);
+    display: grid; place-items: center; background: #E7E7E7; color: #777; font-size: 34px; font-weight: 300;
+  }
+  .sesion dl { display: grid; gap: 6px; font-size: 14px; }
+  .sesion dt { font-weight: 700; }
+  .sesion dd { color: #555; overflow-wrap: anywhere; }
+  .botones { display: grid; gap: 8px; margin-top: 16px; padding-top: 16px; border-top: 1px solid #E5E5E5; }
+
+  /* ── Footer negro ───────────────────────────────────── */
+  .pie-in { max-width: 1440px; margin: 0 auto; padding: 28px 16px 12px; display: grid; gap: 24px; }
+  .pie-in .logo-pie { width: 140px; }
+  .pie-in p { color: #CCCCCC; }
+  .pie-in ul { list-style: none; display: grid; gap: 6px; }
+  .pie-final { max-width: 1440px; margin: 0 auto; }
+
+  /* ── Menú inferior (celular) ────────────────────────── */
+  .menu-inferior {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 20;
+    display: grid; grid-template-columns: repeat(5, 1fr);
+    background: var(--blanco); border-top: 1px solid #D5D5D5;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.08);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  .menu-inferior a {
+    position: relative; display: grid; justify-items: center; align-content: center; gap: 4px;
+    min-height: 60px; color: #666; font-size: 11.5px; font-weight: 500; text-decoration: none;
+  }
+  .menu-inferior i { font-size: 19px; }
+  .menu-inferior a[aria-current="page"] { color: var(--verde-panel); font-weight: 700; }
+  .menu-inferior a[aria-current="page"]::before { content: ''; position: absolute; top: -1px; left: 20%; right: 20%; height: 3px; background: var(--verde-panel); border-radius: 0 0 2px 2px; }
+
+  /* ── Computador ─────────────────────────────────────── */
+  @media (min-width: 1024px) {
+    body { padding-bottom: 0; }
+    .menu-inferior { display: none; }
+
+    .cabecera-in { height: 84px; padding: 0 32px; gap: 16px; }
+    .cabecera .logo { height: 48px; }
+    .cabecera .separador { height: 46px; }
+    .cabecera .sistema { font-size: 15px; letter-spacing: 0.04em; }
+    .cabecera .sistema br { display: none; }
+    .cabecera .bienvenida { display: block; margin-left: auto; font-size: 24px; font-weight: 300; margin-right: 24px; }
+    .foto { margin-left: 0; width: 54px; height: 54px; font-size: 18px; }
+    .cabecera .nombre { display: block; font-size: 15px; text-transform: uppercase; line-height: 1.3; }
+    .cabecera .nombre small { display: block; text-transform: none; color: var(--texto-suave); font-size: 13px; }
+
+    .pestanas { display: block; background: var(--pestana); border-bottom: 1px solid var(--borde); }
+    .pestanas ul { list-style: none; display: flex; max-width: 1440px; margin: 0 auto; padding: 0 32px; }
+    .pestanas a {
+      display: flex; align-items: center; height: 50px; padding: 0 18px;
+      border-right: 1px solid var(--borde); color: #555; text-decoration: none; font-size: 15px;
+    }
+    .pestanas li:first-child a { border-left: 1px solid var(--borde); }
+    .pestanas a:hover { background: #EFEFEF; color: #222; }
+    .pestanas a[aria-current="page"] { background: var(--pestana-activa); color: #111; font-weight: 500; box-shadow: inset 0 -3px 0 var(--verde-panel); }
+
+    .contenido {
+      display: grid; grid-template-columns: minmax(0, 2fr) minmax(340px, 1fr);
+      gap: 24px; padding: 24px 32px 40px; align-items: start;
+    }
+    .columna { display: flex; flex-direction: column; gap: 24px; }
+    .columna > * { order: 0; } /* en PC se respeta el orden del portal: Mi sesión arriba a la derecha */
+    .banner { padding: 32px 36px 30px; }
+    .banner h2 { font-size: 34px; }
+    .banner .marca-agua { width: 340px; right: -30px; bottom: -48px; }
+    .plantel { grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); gap: 8px; }
+    .dorsal { min-height: 68px; }
+    .dorsal .numero { font-size: 22px; }
+    .dorsal .apellido { font-size: 12px; }
+
+    .pie-in { grid-template-columns: 160px 1fr 1fr; gap: 40px; padding: 32px 32px 16px; }
+    .pie-final { padding: 16px 32px; }
+  }
+</style>
+</head>
+<body>
+  <header class="cabecera">
+    <div class="cabecera-in">
+      <img class="logo" src="../../../frontend/public/brand/logo-horizontal-verde.png" alt="Universidad Simón Bolívar">
+      <span class="separador" aria-hidden="true"></span>
+      <span class="sistema">ADMINISTRACIÓN<br> DEPORTIVA</span>
+      <span class="bienvenida">Bienvenido</span>
+      <div class="foto" aria-hidden="true">CD</div>
+      <span class="nombre">César Díaz<small>Entrenador, Rugby</small></span>
+    </div>
+  </header>
+  <div class="franja" role="presentation"></div>
+
+  <nav class="pestanas" aria-label="Menú principal">
+    <ul>
+      <li><a href="#" aria-current="page">Inicio</a></li>
+      <li><a href="#">Equipos</a></li>
+      <li><a href="#">Deportistas</a></li>
+      <li><a href="#">Entrenamientos</a></li>
+      <li><a href="#">Asistencia</a></li>
+      <li><a href="#">Partidos</a></li>
+      <li><a href="#">Estadísticas</a></li>
+      <li><a href="#">Lesiones</a></li>
+      <li><a href="#">Evaluaciones</a></li>
+    </ul>
+  </nav>
+
+  <main class="contenido">
+    <div class="columna">
+      <!-- Próximo partido -->
+      <section class="banner o1" aria-labelledby="t-partido">
+        <img class="marca-agua" src="../../../frontend/public/brand/monograma-u-blanco-256.png" alt="">
+        <p class="tipo">Próximo partido de liga</p>
+        <h2 id="t-partido">Unisimón vs. Deportivo Sur</h2>
+        <p class="detalle"><i class="fa-regular fa-calendar" aria-hidden="true"></i> Domingo 11 de octubre, 3:00 p. m.</p>
+        <p class="detalle"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Cancha principal, sede Cúcuta</p>
+        <div class="acciones">
+          <a class="btn btn-naranja" href="#">Ver partido</a>
+          <span class="disponibles"><i class="fa-solid fa-user-check" aria-hidden="true"></i><span><b>20 de 23</b> jugadores disponibles</span></span>
+        </div>
+      </section>
+
+      <!-- Disponibilidad -->
+      <section class="panel o2" aria-labelledby="t-disp">
+        <div class="panel-cabecera">
+          <h2 id="t-disp">Disponibilidad del plantel</h2>
+          <span class="contador num">20 de 23</span>
+        </div>
+        <div class="panel-cuerpo">
+          <ul class="plantel" aria-label="Estado de cada jugador">
+            <li class="dorsal"><span class="numero">1</span><span class="apellido">Torres</span></li>
+            <li class="dorsal lesionado"><i class="fa-solid fa-circle-xmark estado" aria-label="Lesionado"></i><span class="numero">2</span><span class="apellido">Ramírez</span></li>
+            <li class="dorsal"><span class="numero">3</span><span class="apellido">Méndez</span></li>
+            <li class="dorsal"><span class="numero">4</span><span class="apellido">García</span></li>
+            <li class="dorsal"><span class="numero">5</span><span class="apellido">Flores</span></li>
+            <li class="dorsal"><span class="numero">6</span><span class="apellido">Pabón</span></li>
+            <li class="dorsal restringido"><i class="fa-solid fa-triangle-exclamation estado" aria-label="Con restricciones"></i><span class="numero">7</span><span class="apellido">Contreras</span></li>
+            <li class="dorsal"><span class="numero">8</span><span class="apellido">Villamizar</span></li>
+            <li class="dorsal"><span class="numero">9</span><span class="apellido">Peñaranda</span></li>
+            <li class="dorsal"><span class="numero">10</span><span class="apellido">Rincón</span></li>
+            <li class="dorsal"><span class="numero">11</span><span class="apellido">Jaimes</span></li>
+            <li class="dorsal"><span class="numero">12</span><span class="apellido">Ortega</span></li>
+            <li class="dorsal"><span class="numero">13</span><span class="apellido">Sandoval</span></li>
+            <li class="dorsal lesionado"><i class="fa-solid fa-circle-xmark estado" aria-label="Lesionado"></i><span class="numero">14</span><span class="apellido">Duarte</span></li>
+            <li class="dorsal"><span class="numero">15</span><span class="apellido">Carrillo</span></li>
+            <li class="dorsal"><span class="numero">16</span><span class="apellido">Bautista</span></li>
+            <li class="dorsal"><span class="numero">17</span><span class="apellido">Quintero</span></li>
+            <li class="dorsal restringido"><i class="fa-solid fa-triangle-exclamation estado" aria-label="Con restricciones"></i><span class="numero">18</span><span class="apellido">Suárez</span></li>
+            <li class="dorsal"><span class="numero">19</span><span class="apellido">Galvis</span></li>
+            <li class="dorsal"><span class="numero">20</span><span class="apellido">Rojas</span></li>
+            <li class="dorsal"><span class="numero">21</span><span class="apellido">Parada</span></li>
+            <li class="dorsal lesionado"><i class="fa-solid fa-circle-xmark estado" aria-label="Lesionado"></i><span class="numero">22</span><span class="apellido">Mora</span></li>
+            <li class="dorsal"><span class="numero">23</span><span class="apellido">Ibarra</span></li>
+          </ul>
+          <p class="leyenda">
+            <span><i class="fa-solid fa-circle-check l-ok" aria-hidden="true"></i><b>18</b> disponibles</span>
+            <span><i class="fa-solid fa-triangle-exclamation l-av" aria-hidden="true"></i><b>2</b> con restricciones</span>
+            <span><i class="fa-solid fa-circle-xmark l-er" aria-hidden="true"></i><b>3</b> lesionados</span>
+          </p>
+        </div>
+      </section>
+
+      <!-- Asistencia -->
+      <section class="panel o5" aria-labelledby="t-asis">
+        <div class="panel-cabecera"><h2 id="t-asis">Asistencia a entrenamientos</h2></div>
+        <div class="panel-cuerpo">
+          <ul class="asistencia">
+            <li><div class="fila"><span><b>Resistencia</b>, viernes 9</span><span>22 de 23</span></div><div class="pista"><div style="width:96%">96 %</div></div></li>
+            <li><div class="fila"><span><b>Táctica</b>, miércoles 7</span><span>18 de 23</span></div><div class="pista"><div style="width:78%">78 %</div></div></li>
+            <li><div class="fila"><span><b>Fuerza</b>, lunes 5</span><span>21 de 23</span></div><div class="pista"><div style="width:91%">91 %</div></div></li>
+            <li><div class="fila"><span><b>Resistencia</b>, viernes 2</span><span>16 de 23</span></div><div class="pista"><div class="baja" style="width:70%">70 %</div></div></li>
+          </ul>
+          <p class="nota"><span aria-hidden="true"></span>Sesiones con menos del 75 % de asistencia.</p>
+        </div>
+      </section>
+    </div>
+
+    <div class="columna">
+      <!-- Mi sesión -->
+      <section class="panel o6" aria-labelledby="t-sesion">
+        <div class="panel-cabecera"><h2 id="t-sesion">Mi sesión</h2></div>
+        <div class="panel-cuerpo">
+          <div class="sesion">
+            <div class="foto-grande" aria-hidden="true">CD</div>
+            <dl>
+              <div><dt>Nombre</dt><dd>César Díaz</dd></div>
+              <div><dt>Rol</dt><dd>Entrenador</dd></div>
+              <div><dt>Equipo</dt><dd>Rugby masculino</dd></div>
+              <div><dt>Usuario</dt><dd>cesar_dt</dd></div>
+            </dl>
+          </div>
+          <div class="botones">
+            <a class="btn btn-naranja btn-bloque" href="#"><i class="fa-solid fa-clipboard-check" aria-hidden="true"></i> Tomar asistencia</a>
+            <a class="btn btn-gris btn-bloque" href="#">Registrar entrenamiento</a>
+            <a class="btn btn-gris btn-bloque" href="#">Cambiar contraseña</a>
+            <a class="btn btn-gris btn-bloque" href="#">Cerrar sesión</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Para revisar -->
+      <section class="panel o3" aria-labelledby="t-rev">
+        <div class="panel-cabecera"><h2 id="t-rev">Para revisar</h2><span class="contador">3</span></div>
+        <div class="panel-cuerpo">
+          <ul class="avisos">
+            <li class="av-error"><i class="fa-solid fa-kit-medical" aria-hidden="true"></i><div><b>Pedro Ramírez</b> lleva 9 días lesionado. Retorno estimado: 20 de octubre.<br><a href="#">Ver seguimiento</a></div></li>
+            <li class="av-aviso"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i><div><b>Andrés Contreras</b> juega con restricción: sin contacto en el scrum hasta el 15 de octubre.<br><a href="#">Ver control médico</a></div></li>
+            <li class="av-info"><i class="fa-solid fa-ruler" aria-hidden="true"></i><div><b>4 jugadores</b> no tienen evaluación antropométrica este semestre.<br><a href="#">Ver quiénes son</a></div></li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Esta semana -->
+      <section class="panel o4" aria-labelledby="t-semana">
+        <div class="panel-cabecera"><h2 id="t-semana">Esta semana</h2></div>
+        <div class="panel-cuerpo">
+          <ul class="agenda">
+            <li class="partido"><div class="fecha"><small>dom</small><b class="num">11</b></div><div><p class="titulo">Unisimón vs. Deportivo Sur <span class="etiqueta">Liga</span></p><p class="detalle">3:00 p. m., cancha principal</p></div></li>
+            <li><div class="fecha"><small>lun</small><b class="num">12</b></div><div><p class="titulo">Fuerza y recuperación</p><p class="detalle">6:00 a. m., gimnasio</p></div></li>
+            <li><div class="fecha"><small>mié</small><b class="num">14</b></div><div><p class="titulo">Táctica: salidas y line-out</p><p class="detalle">5:30 p. m., cancha sintética</p></div></li>
+            <li><div class="fecha"><small>vie</small><b class="num">16</b></div><div><p class="titulo">Resistencia</p><p class="detalle">5:30 p. m., pista atlética</p></div></li>
+          </ul>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="pie">
+    <div class="pie-in">
+      <img class="logo-pie" src="../../../frontend/public/brand/logo-apilado-blanco.png" alt="Universidad Simón Bolívar, Barranquilla y Cúcuta, Colombia. Vigilada MinEducación">
+      <div>
+        <h3>Administración Deportiva</h3>
+        <p>Plantel, entrenamientos, salud y rendimiento de los equipos deportivos de la sede Cúcuta. Uso interno.</p>
+      </div>
+      <div>
+        <h3>Portales</h3>
+        <ul>
+          <li><a href="https://www.unisimon.edu.co">Unisimón</a></li>
+          <li><a href="https://cucuta.unisimon.edu.co/estudiante/">Portal Estudiante</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="pie-final">
+      <span>Todos los derechos reservados © Universidad Simón Bolívar - 2026</span>
+    </div>
+  </footer>
+
+  <nav class="menu-inferior" aria-label="Menú principal">
+    <a href="#" aria-current="page"><i class="fa-solid fa-house" aria-hidden="true"></i>Inicio</a>
+    <a href="#"><i class="fa-solid fa-users" aria-hidden="true"></i>Plantel</a>
+    <a href="#"><i class="fa-regular fa-calendar" aria-hidden="true"></i>Agenda</a>
+    <a href="#"><i class="fa-solid fa-clipboard-check" aria-hidden="true"></i>Asistencia</a>
+    <a href="#"><i class="fa-solid fa-bars" aria-hidden="true"></i>Más</a>
+  </nav>
+</body>
+</html>

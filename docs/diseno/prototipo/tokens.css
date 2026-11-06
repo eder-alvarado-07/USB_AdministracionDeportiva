@@ -1,0 +1,146 @@
+/* Prototipo v1.3 (versión 2) — lenguaje visual de las plataformas de Unisimón.
+   Valores medidos en el portal estudiantil (cucuta.unisimon.edu.co/estudiante)
+   y en unisimon.edu.co. Ver docs/diseno/DESIGN.md */
+:root {
+  /* Verdes institucionales */
+  --verde-logo: #09843B;     /* archivo oficial del logo */
+  --verde-panel: #088732;    /* encabezados de panel del portal */
+  --verde-boton: #218D45;    /* botones del portal */
+  --verde-boton-hover: #1A7238;
+  --verde-texto: #148E40;    /* títulos y enlaces verdes del portal */
+  --verde-noche: #00470A;    /* banner del portal */
+
+  /* Franja de marca (bajo el header del portal) */
+  --franja-naranja: linear-gradient(90deg, #F18700, #FFB31F);
+  --franja-verde: linear-gradient(90deg,
+      #00642D 0%, #00642D 71%,
+      #04843C 71%, #04843C 82%,
+      #00916F 82%, #00916F 96%,
+      #0CA8E3 96%);
+
+  /* Acento y estados (familia Bootstrap del portal) */
+  --naranja: #F0AD4E;        /* botón destacado del portal ("Actualizar datos") */
+  --naranja-hover: #EC971F;
+  --ok-fondo: #DFF0D8;  --ok-borde: #D6E9C6;  --ok-texto: #3C763D;
+  --aviso-fondo: #FCF8E3; --aviso-borde: #FAEBCC; --aviso-texto: #8A6D3B;
+  --error-fondo: #F2DEDE; --error-borde: #EBCCD1; --error-texto: #A94442;
+  --rojo: #D40B0B;           /* notas reprobadas del portal */
+  --info-fondo: #D9EDF7; --info-texto: #31708F;
+
+  /* Neutros */
+  --fondo: #EEEEEE;
+  --blanco: #FFFFFF;
+  --texto: #333333;
+  --texto-suave: #6B6B6B;
+  --borde: #DDDDDD;
+  --pestana: #F8F8F8;
+  --pestana-activa: #E7E7E7;
+  --negro: #000000;
+  --linea-negra: #252525;
+
+  --sombra-panel: 0 1px 3px rgba(0, 0, 0, 0.14), 0 4px 0 -1px #D2D2D2;
+  --radio: 4px;
+
+  --f-ui: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  font-family: var(--f-ui);
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--texto);
+  background: var(--fondo);
+  -webkit-font-smoothing: antialiased;
+}
+img { display: block; max-width: 100%; }
+[hidden] { display: none !important; }
+b, strong { font-weight: 700; }
+button, input, select { font: inherit; color: inherit; }
+a { color: var(--verde-texto); }
+.num { font-variant-numeric: tabular-nums; }
+
+:focus-visible { outline: 3px solid #F0AD4E; outline-offset: 2px; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+}
+
+/* ── Franja de marca: línea naranja + banda verde segmentada ── */
+.franja { display: block; }
+.franja::before { content: ''; display: block; height: 4px; background: var(--franja-naranja); }
+.franja::after  { content: ''; display: block; height: 14px; background: var(--franja-verde); }
+
+/* ── Panel con encabezado verde (patrón del portal) ── */
+.panel {
+  background: var(--blanco);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra-panel);
+  overflow: hidden;
+}
+.panel-cabecera {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  min-height: 48px; padding: 10px 16px;
+  background: var(--verde-panel); color: var(--blanco);
+}
+.panel-cabecera h2 { font-size: 18px; font-weight: 700; line-height: 1.25; }
+.panel-cabecera .contador {
+  padding: 2px 10px; border-radius: 12px;
+  background: rgba(255, 255, 255, 0.18); font-size: 14px; font-weight: 700; white-space: nowrap;
+}
+.panel-cuerpo { padding: 16px; }
+
+/* ── Botones ── */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: 44px; padding: 0 18px;
+  border: 1px solid transparent; border-radius: var(--radio);
+  font-size: 15px; font-weight: 500; text-decoration: none; cursor: pointer;
+  transition: background-color .15s ease, border-color .15s ease;
+}
+.btn-verde { background: var(--verde-boton); color: var(--blanco); }
+.btn-verde:hover { background: var(--verde-boton-hover); }
+.btn-naranja { background: var(--naranja); color: var(--blanco); }
+.btn-naranja:hover { background: var(--naranja-hover); }
+.btn-gris { background: #EEEEEE; color: var(--texto); border-color: #CCCCCC; }
+.btn-gris:hover { background: #E2E2E2; }
+.btn-bloque { width: 100%; }
+
+/* ── Campos ── */
+.campo { display: grid; gap: 6px; }
+.campo label { font-size: 15px; font-weight: 700; }
+.control { position: relative; }
+.control .entrada {
+  width: 100%; min-height: 46px; padding: 0 46px 0 14px;
+  background: var(--blanco); border: 1px solid #CCCCCC; border-radius: var(--radio);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+.control .entrada:focus { outline: none; border-color: var(--verde-boton); box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 0 3px rgba(33, 141, 69, 0.2); }
+.control .entrada[aria-invalid="true"] { border-color: var(--error-texto); }
+.control .icono {
+  position: absolute; right: 1px; top: 1px; width: 44px; height: 44px;
+  display: grid; place-items: center; color: #555; font-size: 16px;
+  background: none; border: 0;
+}
+button.icono { cursor: pointer; }
+
+/* ── Alerta (familia Bootstrap) ── */
+.alerta { display: flex; gap: 10px; align-items: flex-start; padding: 12px 14px; border: 1px solid; border-radius: var(--radio); font-size: 14px; }
+.alerta i { margin-top: 3px; }
+.alerta-error { background: var(--error-fondo); border-color: var(--error-borde); color: var(--error-texto); }
+
+/* ── Footer negro (patrón del portal) ── */
+.pie { background: var(--negro); color: var(--blanco); font-size: 14px; }
+.pie a { color: var(--blanco); text-decoration: none; }
+.pie ul a { display: inline-flex; align-items: center; min-height: 32px; }
+.pie a:hover { text-decoration: underline; }
+.pie h3 { font-size: 14px; font-weight: 700; padding-bottom: 10px; margin-bottom: 12px; border-bottom: 1px solid var(--linea-negra); }
+.pie-final {
+  display: flex; flex-wrap: wrap; gap: 8px 16px; justify-content: space-between; align-items: center;
+  padding: 16px; border-top: 1px solid var(--linea-negra); font-size: 13px;
+}
+.pie-final nav { display: flex; flex-wrap: wrap; gap: 4px 0; }
+.pie-final nav a { padding: 0 12px; border-left: 1px solid #555; line-height: 1.2; }
+.pie-final nav a:first-child { border-left: 0; padding-left: 0; }

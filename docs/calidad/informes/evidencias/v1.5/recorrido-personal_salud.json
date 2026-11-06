@@ -1,0 +1,522 @@
+[
+  {
+    "rol": "personal_salud",
+    "ancho": "celular360",
+    "ruta": "/",
+    "permitido": true,
+    "destino": "/",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "personal_salud",
+    "ancho": "celular360",
+    "ruta": "/head-coach",
+    "permitido": false,
+    "destino": "/",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "personal_salud",
+    "ancho": "celular360",
+    "ruta": "/equipos",
+    "permitido": false,
+    "destino": "/",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "personal_salud",
+    "ancho": "celular360",
+    "ruta": "/jugadores",
+    "permitido": true,
+    "destino": "/jugadores",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "personal_salud",
+    "ancho": "celular360",
+    "ruta": "/entrenamientos",
+    "permitido": false,
+    "destino": "/",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "personal_salud",
+    "ancho": "celular360",
+    "ruta": "/asistencia",
+    "permitido": false,
+    "destino": "/",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "personal_salud",
+    "ancho": "celular360",
+    "ruta": "/partidos",
+    "permitido": false,
+    "destino": "/",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "personal_salud",
+    "ancho": "celular360",
+    "ruta": "/estadisticas",
+    "permitido": true,
+    "destino": "/estadisticas",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "personal_salud",
+    "ancho": "celular360",
+    "ruta": "/lesiones",
+    "permitido": true,
+    "destino": "/lesiones",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "personal_salud",
+    "ancho": "celular360",
+    "ruta": "/salud",
+    "permitido": true,
+    "destino": "/salud",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "personal_salud",
+    "ancho": "celular360",
+    "ruta": "/evaluaciones",
+    "permitido": true,
+    "destino": "/evaluaciones",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "personal_salud",
+    "ancho": "celular360",
+    "ruta": "/antropometria",
+    "permitido": true,
+    "destino": "/antropometria",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "personal_salud",
+    "ancho": "celular360",
+    "ruta": "/usuarios",
+    "permitido": false,
+    "destino": "/",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "personal_salud",
+    "ancho": "celular",
+    "ruta": "/",
+    "permitido": true,
+    "destino": "/",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "personal_salud",
+    "ancho": "celular",
+    "ruta": "/head-coach",
+    "permitido": false,
+    "destino": "/",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "personal_salud",
+    "ancho": "celular",
+    "ruta": "/equipos",
+    "permitido": false,
+    "destino": "/",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "personal_salud",
+    "ancho": "celular",
+    "ruta": "/jugadores",
+    "permitido": true,
+    "destino": "/jugadores",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "personal_salud",
+    "ancho": "celular",
+    "ruta": "/entrenamientos",
+    "permitido": false,
+    "destino": "/",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "personal_salud",
+    "ancho": "celular",
+    "ruta": "/asistencia",
+    "permitido": false,
+    "destino": "/",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "personal_salud",
+    "ancho": "celular",
+    "ruta": "/partidos",
+    "permitido": false,
+    "destino": "/",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "personal_salud",
+    "ancho": "celular",
+    "ruta": "/estadisticas",
+    "permitido": true,
+    "destino": "/estadisticas",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "personal_salud",
+    "ancho": "celular",
+    "ruta": "/lesiones",
+    "permitido": true,
+    "destino": "/lesiones",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "personal_salud",
+    "ancho": "celular",
+    "ruta": "/salud",
+    "permitido": true,
+    "destino": "/salud",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "personal_salud",
+    "ancho": "celular",
+    "ruta": "/evaluaciones",
+    "permitido": true,
+    "destino": "/evaluaciones",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "personal_salud",
+    "ancho": "celular",
+    "ruta": "/antropometria",
+    "permitido": true,
+    "destino": "/antropometria",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "personal_salud",
+    "ancho": "celular",
+    "ruta": "/usuarios",
+    "permitido": false,
+    "destino": "/",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "personal_salud",
+    "ancho": "tableta",
+    "ruta": "/",
+    "permitido": true,
+    "destino": "/",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "personal_salud",
+    "ancho": "tableta",
+    "ruta": "/head-coach",
+    "permitido": false,
+    "destino": "/",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "personal_salud",
+    "ancho": "tableta",
+    "ruta": "/equipos",
+    "permitido": false,
+    "destino": "/",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "personal_salud",
+    "ancho": "tableta",
+    "ruta": "/jugadores",
+    "permitido": true,
+    "destino": "/jugadores",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "personal_salud",
+    "ancho": "tableta",
+    "ruta": "/entrenamientos",
+    "permitido": false,
+    "destino": "/",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "personal_salud",
+    "ancho": "tableta",
+    "ruta": "/asistencia",
+    "permitido": false,
+    "destino": "/",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "personal_salud",
+    "ancho": "tableta",
+    "ruta": "/partidos",
+    "permitido": false,
+    "destino": "/",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "personal_salud",
+    "ancho": "tableta",
+    "ruta": "/estadisticas",
+    "permitido": true,
+    "destino": "/estadisticas",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "personal_salud",
+    "ancho": "tableta",
+    "ruta": "/lesiones",
+    "permitido": true,
+    "destino": "/lesiones",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "personal_salud",
+    "ancho": "tableta",
+    "ruta": "/salud",
+    "permitido": true,
+    "destino": "/salud",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "personal_salud",
+    "ancho": "tableta",
+    "ruta": "/evaluaciones",
+    "permitido": true,
+    "destino": "/evaluaciones",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "personal_salud",
+    "ancho": "tableta",
+    "ruta": "/antropometria",
+    "permitido": true,
+    "destino": "/antropometria",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "personal_salud",
+    "ancho": "tableta",
+    "ruta": "/usuarios",
+    "permitido": false,
+    "destino": "/",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "personal_salud",
+    "ancho": "pc",
+    "ruta": "/",
+    "permitido": true,
+    "destino": "/",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "personal_salud",
+    "ancho": "pc",
+    "ruta": "/head-coach",
+    "permitido": false,
+    "destino": "/",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "personal_salud",
+    "ancho": "pc",
+    "ruta": "/equipos",
+    "permitido": false,
+    "destino": "/",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "personal_salud",
+    "ancho": "pc",
+    "ruta": "/jugadores",
+    "permitido": true,
+    "destino": "/jugadores",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "personal_salud",
+    "ancho": "pc",
+    "ruta": "/entrenamientos",
+    "permitido": false,
+    "destino": "/",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "personal_salud",
+    "ancho": "pc",
+    "ruta": "/asistencia",
+    "permitido": false,
+    "destino": "/",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "personal_salud",
+    "ancho": "pc",
+    "ruta": "/partidos",
+    "permitido": false,
+    "destino": "/",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "personal_salud",
+    "ancho": "pc",
+    "ruta": "/estadisticas",
+    "permitido": true,
+    "destino": "/estadisticas",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "personal_salud",
+    "ancho": "pc",
+    "ruta": "/lesiones",
+    "permitido": true,
+    "destino": "/lesiones",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "personal_salud",
+    "ancho": "pc",
+    "ruta": "/salud",
+    "permitido": true,
+    "destino": "/salud",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "personal_salud",
+    "ancho": "pc",
+    "ruta": "/evaluaciones",
+    "permitido": true,
+    "destino": "/evaluaciones",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "personal_salud",
+    "ancho": "pc",
+    "ruta": "/antropometria",
+    "permitido": true,
+    "destino": "/antropometria",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "personal_salud",
+    "ancho": "pc",
+    "ruta": "/usuarios",
+    "permitido": false,
+    "destino": "/",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  }
+]

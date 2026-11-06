@@ -1,0 +1,522 @@
+[
+  {
+    "rol": "entrenador",
+    "ancho": "celular360",
+    "ruta": "/",
+    "permitido": true,
+    "destino": "/",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "entrenador",
+    "ancho": "celular360",
+    "ruta": "/head-coach",
+    "permitido": false,
+    "destino": "/",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "entrenador",
+    "ancho": "celular360",
+    "ruta": "/equipos",
+    "permitido": true,
+    "destino": "/equipos",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "entrenador",
+    "ancho": "celular360",
+    "ruta": "/jugadores",
+    "permitido": true,
+    "destino": "/jugadores",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "entrenador",
+    "ancho": "celular360",
+    "ruta": "/entrenamientos",
+    "permitido": true,
+    "destino": "/entrenamientos",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "entrenador",
+    "ancho": "celular360",
+    "ruta": "/asistencia",
+    "permitido": true,
+    "destino": "/asistencia",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "entrenador",
+    "ancho": "celular360",
+    "ruta": "/partidos",
+    "permitido": true,
+    "destino": "/partidos",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "entrenador",
+    "ancho": "celular360",
+    "ruta": "/estadisticas",
+    "permitido": true,
+    "destino": "/estadisticas",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "entrenador",
+    "ancho": "celular360",
+    "ruta": "/lesiones",
+    "permitido": true,
+    "destino": "/lesiones",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "entrenador",
+    "ancho": "celular360",
+    "ruta": "/salud",
+    "permitido": false,
+    "destino": "/",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "entrenador",
+    "ancho": "celular360",
+    "ruta": "/evaluaciones",
+    "permitido": true,
+    "destino": "/evaluaciones",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "entrenador",
+    "ancho": "celular360",
+    "ruta": "/antropometria",
+    "permitido": false,
+    "destino": "/",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "entrenador",
+    "ancho": "celular360",
+    "ruta": "/usuarios",
+    "permitido": false,
+    "destino": "/",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "entrenador",
+    "ancho": "celular",
+    "ruta": "/",
+    "permitido": true,
+    "destino": "/",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "entrenador",
+    "ancho": "celular",
+    "ruta": "/head-coach",
+    "permitido": false,
+    "destino": "/",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "entrenador",
+    "ancho": "celular",
+    "ruta": "/equipos",
+    "permitido": true,
+    "destino": "/equipos",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "entrenador",
+    "ancho": "celular",
+    "ruta": "/jugadores",
+    "permitido": true,
+    "destino": "/jugadores",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "entrenador",
+    "ancho": "celular",
+    "ruta": "/entrenamientos",
+    "permitido": true,
+    "destino": "/entrenamientos",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "entrenador",
+    "ancho": "celular",
+    "ruta": "/asistencia",
+    "permitido": true,
+    "destino": "/asistencia",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "entrenador",
+    "ancho": "celular",
+    "ruta": "/partidos",
+    "permitido": true,
+    "destino": "/partidos",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "entrenador",
+    "ancho": "celular",
+    "ruta": "/estadisticas",
+    "permitido": true,
+    "destino": "/estadisticas",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "entrenador",
+    "ancho": "celular",
+    "ruta": "/lesiones",
+    "permitido": true,
+    "destino": "/lesiones",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "entrenador",
+    "ancho": "celular",
+    "ruta": "/salud",
+    "permitido": false,
+    "destino": "/",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "entrenador",
+    "ancho": "celular",
+    "ruta": "/evaluaciones",
+    "permitido": true,
+    "destino": "/evaluaciones",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "entrenador",
+    "ancho": "celular",
+    "ruta": "/antropometria",
+    "permitido": false,
+    "destino": "/",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "entrenador",
+    "ancho": "celular",
+    "ruta": "/usuarios",
+    "permitido": false,
+    "destino": "/",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "entrenador",
+    "ancho": "tableta",
+    "ruta": "/",
+    "permitido": true,
+    "destino": "/",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "entrenador",
+    "ancho": "tableta",
+    "ruta": "/head-coach",
+    "permitido": false,
+    "destino": "/",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "entrenador",
+    "ancho": "tableta",
+    "ruta": "/equipos",
+    "permitido": true,
+    "destino": "/equipos",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "entrenador",
+    "ancho": "tableta",
+    "ruta": "/jugadores",
+    "permitido": true,
+    "destino": "/jugadores",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "entrenador",
+    "ancho": "tableta",
+    "ruta": "/entrenamientos",
+    "permitido": true,
+    "destino": "/entrenamientos",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "entrenador",
+    "ancho": "tableta",
+    "ruta": "/asistencia",
+    "permitido": true,
+    "destino": "/asistencia",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "entrenador",
+    "ancho": "tableta",
+    "ruta": "/partidos",
+    "permitido": true,
+    "destino": "/partidos",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "entrenador",
+    "ancho": "tableta",
+    "ruta": "/estadisticas",
+    "permitido": true,
+    "destino": "/estadisticas",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "entrenador",
+    "ancho": "tableta",
+    "ruta": "/lesiones",
+    "permitido": true,
+    "destino": "/lesiones",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "entrenador",
+    "ancho": "tableta",
+    "ruta": "/salud",
+    "permitido": false,
+    "destino": "/",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "entrenador",
+    "ancho": "tableta",
+    "ruta": "/evaluaciones",
+    "permitido": true,
+    "destino": "/evaluaciones",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "entrenador",
+    "ancho": "tableta",
+    "ruta": "/antropometria",
+    "permitido": false,
+    "destino": "/",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "entrenador",
+    "ancho": "tableta",
+    "ruta": "/usuarios",
+    "permitido": false,
+    "destino": "/",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "entrenador",
+    "ancho": "pc",
+    "ruta": "/",
+    "permitido": true,
+    "destino": "/",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "entrenador",
+    "ancho": "pc",
+    "ruta": "/head-coach",
+    "permitido": false,
+    "destino": "/",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "entrenador",
+    "ancho": "pc",
+    "ruta": "/equipos",
+    "permitido": true,
+    "destino": "/equipos",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "entrenador",
+    "ancho": "pc",
+    "ruta": "/jugadores",
+    "permitido": true,
+    "destino": "/jugadores",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "entrenador",
+    "ancho": "pc",
+    "ruta": "/entrenamientos",
+    "permitido": true,
+    "destino": "/entrenamientos",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "entrenador",
+    "ancho": "pc",
+    "ruta": "/asistencia",
+    "permitido": true,
+    "destino": "/asistencia",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "entrenador",
+    "ancho": "pc",
+    "ruta": "/partidos",
+    "permitido": true,
+    "destino": "/partidos",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "entrenador",
+    "ancho": "pc",
+    "ruta": "/estadisticas",
+    "permitido": true,
+    "destino": "/estadisticas",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "entrenador",
+    "ancho": "pc",
+    "ruta": "/lesiones",
+    "permitido": true,
+    "destino": "/lesiones",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "entrenador",
+    "ancho": "pc",
+    "ruta": "/salud",
+    "permitido": false,
+    "destino": "/",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "entrenador",
+    "ancho": "pc",
+    "ruta": "/evaluaciones",
+    "permitido": true,
+    "destino": "/evaluaciones",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "entrenador",
+    "ancho": "pc",
+    "ruta": "/antropometria",
+    "permitido": false,
+    "destino": "/",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  },
+  {
+    "rol": "entrenador",
+    "ancho": "pc",
+    "ruta": "/usuarios",
+    "permitido": false,
+    "destino": "/",
+    "desborde": 0,
+    "problemas": [],
+    "ok": true
+  }
+]

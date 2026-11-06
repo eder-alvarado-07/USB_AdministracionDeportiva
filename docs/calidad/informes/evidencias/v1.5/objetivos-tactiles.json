@@ -1,0 +1,111 @@
+[
+  {
+    "rol": "administrador",
+    "ruta": "/",
+    "total": 31,
+    "adecuados": 31,
+    "ejemplos": []
+  },
+  {
+    "rol": "administrador",
+    "ruta": "/jugadores",
+    "total": 75,
+    "adecuados": 75,
+    "ejemplos": []
+  },
+  {
+    "rol": "administrador",
+    "ruta": "/equipos",
+    "total": 21,
+    "adecuados": 18,
+    "ejemplos": [
+      "button 24px \"Cambiar el escudo de Club Rugb\"",
+      "button 24px \"Cambiar el escudo de Los Cóndo\"",
+      "button 24px \"Cambiar el escudo de Unisimón \""
+    ]
+  },
+  {
+    "rol": "administrador",
+    "ruta": "/lesiones",
+    "total": 14,
+    "adecuados": 14,
+    "ejemplos": []
+  },
+  {
+    "rol": "administrador",
+    "ruta": "/usuarios",
+    "total": 32,
+    "adecuados": 32,
+    "ejemplos": []
+  },
+  {
+    "rol": "administrador",
+    "ruta": "/antropometria",
+    "total": 12,
+    "adecuados": 12,
+    "ejemplos": []
+  },
+  {
+    "rol": "entrenador",
+    "ruta": "/",
+    "total": 29,
+    "adecuados": 29,
+    "ejemplos": []
+  },
+  {
+    "rol": "entrenador",
+    "ruta": "/asistencia",
+    "total": 33,
+    "adecuados": 33,
+    "ejemplos": []
+  },
+  {
+    "rol": "entrenador",
+    "ruta": "/entrenamientos",
+    "total": 28,
+    "adecuados": 28,
+    "ejemplos": []
+  },
+  {
+    "rol": "entrenador",
+    "ruta": "/partidos",
+    "total": 16,
+    "adecuados": 16,
+    "ejemplos": []
+  },
+  {
+    "rol": "salud",
+    "ruta": "/",
+    "total": 19,
+    "adecuados": 19,
+    "ejemplos": []
+  },
+  {
+    "rol": "salud",
+    "ruta": "/salud",
+    "total": 24,
+    "adecuados": 24,
+    "ejemplos": []
+  },
+  {
+    "rol": "salud",
+    "ruta": "/evaluaciones",
+    "total": 9,
+    "adecuados": 9,
+    "ejemplos": []
+  },
+  {
+    "rol": "jugador",
+    "ruta": "/",
+    "total": 12,
+    "adecuados": 12,
+    "ejemplos": []
+  },
+  {
+    "rol": "jugador",
+    "ruta": "/estadisticas",
+    "total": 7,
+    "adecuados": 7,
+    "ejemplos": []
+  }
+]
